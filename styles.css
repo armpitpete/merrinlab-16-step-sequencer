@@ -1,8 +1,15 @@
 :root {
   color-scheme: dark;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #15171a;
+  background: #111315;
   color: #eef1f3;
+  --panel: #171b20;
+  --panel-2: #1b2026;
+  --line: #3a424b;
+  --line-soft: #2c333b;
+  --text-soft: #aab3bd;
+  --accent: #d11b82;
+  --accent-2: #b8f2c7;
 }
 
 * {
@@ -12,7 +19,9 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top left, #2c3238, #101214 60%);
+  background:
+    radial-gradient(circle at top left, rgba(60, 69, 78, 0.42), transparent 36rem),
+    linear-gradient(135deg, #101214, #171a1d 54%, #0d0f11);
 }
 
 button,
@@ -21,29 +30,30 @@ input {
 }
 
 button {
-  border: 1px solid #57606a;
+  border: 1px solid #58616c;
   border-radius: 999px;
-  background: #23282e;
+  background: linear-gradient(#252a30, #171b20);
   color: #f5f7f8;
   padding: 0.45rem 0.75rem;
   cursor: default;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 1px 2px rgba(0,0,0,0.55);
 }
 
 button.active,
 .toggle.active {
-  border-color: #b8f2c7;
-  background: #153722;
-  box-shadow: 0 0 0 1px rgba(184, 242, 199, 0.25);
+  border-color: var(--accent-2);
+  background: linear-gradient(#16402a, #102417);
+  box-shadow: 0 0 0 1px rgba(184, 242, 199, 0.25), inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
 .panel {
-  width: min(1800px, calc(100vw - 24px));
+  width: min(1840px, calc(100vw - 24px));
   margin: 12px auto;
   padding: 18px;
-  border: 1px solid #3b424a;
+  border: 1px solid var(--line);
   border-radius: 24px;
-  background: rgba(22, 25, 29, 0.94);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  background: linear-gradient(160deg, rgba(26, 30, 35, 0.98), rgba(17, 20, 23, 0.98));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.025), 0 24px 80px rgba(0, 0, 0, 0.45);
 }
 
 .panel-header,
@@ -51,19 +61,19 @@ button.active,
 .status-strip,
 .io-area {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 .panel-header {
   grid-template-columns: minmax(280px, 1fr) minmax(260px, 380px);
   align-items: stretch;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .eyebrow {
   margin: 0 0 0.25rem;
-  color: #aab3bd;
-  letter-spacing: 0.18em;
+  color: var(--text-soft);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   font-size: 0.78rem;
 }
@@ -79,18 +89,19 @@ h1 {
   margin-bottom: 0.35rem;
   font-size: clamp(2rem, 4vw, 4rem);
   line-height: 1;
+  letter-spacing: 0.02em;
 }
 
 h2 {
-  margin-bottom: 0.7rem;
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
+  margin-bottom: 0.65rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #c7d0d9;
 }
 
 h3 {
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.55rem;
   font-size: 1rem;
 }
 
@@ -98,8 +109,8 @@ h3 {
 .control-block p,
 .mode-card p {
   margin-bottom: 0;
-  color: #aab3bd;
-  font-size: 0.9rem;
+  color: var(--text-soft);
+  font-size: 0.86rem;
 }
 
 .mode-card,
@@ -107,22 +118,29 @@ h3 {
 .status-strip > div,
 .step,
 .io-block {
-  border: 1px solid #343b43;
-  border-radius: 18px;
-  background: #1b2026;
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--panel-2), #15191e);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.025);
+}
+
+.mode-card,
+.control-block,
+.status-strip > div,
+.io-block {
   padding: 14px;
 }
 
 .control-strip {
-  grid-template-columns: repeat(6, minmax(170px, 1fr));
-  margin-bottom: 14px;
+  grid-template-columns: repeat(6, minmax(168px, 1fr));
+  margin-bottom: 12px;
 }
 
 .button-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.6rem;
 }
 
 .button-row.three button {
@@ -132,9 +150,18 @@ h3 {
 .clock label,
 .step label {
   display: grid;
+  color: #d4dbe2;
+}
+
+.clock label {
   gap: 5px;
-  color: #cbd4dc;
   font-size: 0.78rem;
+}
+
+.step label {
+  gap: 7px;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
 }
 
 .clock input,
@@ -142,9 +169,30 @@ h3 {
   width: 100%;
 }
 
+input[type="range"] {
+  accent-color: var(--accent);
+}
+
+.step input[type="range"] {
+  height: 1.4rem;
+}
+
+.step input[type="range"]::-webkit-slider-runnable-track {
+  height: 0.42rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), #e9eef1);
+}
+
+.step input[type="range"]::-webkit-slider-thumb {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: -0.34rem;
+  border-radius: 50%;
+}
+
 .status-strip {
   grid-template-columns: repeat(4, minmax(140px, 1fr));
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .status-strip strong {
@@ -186,10 +234,10 @@ h3 {
 .led-code i,
 .step-led {
   display: inline-block;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: #39424c;
+  background: #303841;
   border: 1px solid #56606b;
 }
 
@@ -200,36 +248,42 @@ h3 {
 }
 
 .section-title {
-  margin: 8px 0 12px;
+  margin: 6px 0 10px;
 }
 
 .step-grid {
   display: grid;
   grid-template-columns: repeat(16, minmax(92px, 1fr));
-  gap: 8px;
-  margin-bottom: 14px;
+  gap: 7px;
+  margin-bottom: 12px;
 }
 
 .step {
   min-width: 0;
-  padding: 10px;
+  padding: 10px 9px;
+  display: grid;
+  grid-template-rows: auto auto auto auto auto;
+  gap: 7px;
+  align-content: start;
 }
 
 .step.active {
-  border-color: #b8f2c7;
+  border-color: var(--accent-2);
+  box-shadow: inset 0 0 0 1px rgba(184, 242, 199, 0.15), 0 0 18px rgba(184, 242, 199, 0.08);
 }
 
-.step button {
+.step > button {
   width: 100%;
-  margin: 8px 0;
-  padding-inline: 0.25rem;
+  margin: 2px 0 0;
+  padding: 0.34rem 0.25rem;
+  font-size: 0.82rem;
 }
 
 .step-status {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 4px;
-  margin: 8px 0;
+  margin: 0;
 }
 
 .step-status button {
@@ -237,9 +291,16 @@ h3 {
   width: auto;
   margin: 0;
   padding: 0.22rem 0;
-  border-radius: 8px;
-  font-size: 0.68rem;
+  border-radius: 7px;
+  font-size: 0.64rem;
   line-height: 1;
+  color: #d8dde2;
+  border-color: #454e58;
+  background: linear-gradient(#20252b, #13171b);
+}
+
+.step-led {
+  margin-top: 4px;
 }
 
 .io-area {
@@ -267,7 +328,7 @@ h3 {
   height: 18px;
   border-radius: 50%;
   border: 2px solid #83b8ff;
-  background: #101418;
+  background: radial-gradient(circle at 50% 50%, #0d1115 38%, #26303a 40%, #090b0d 65%);
 }
 
 .jack.out {
