@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MerrinLab Classic Sequencer Placeholder</title>
+  <title>MerrinLab Classic 16-Step Sequencer Placeholder</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,13 +12,40 @@
       <div>
         <p class="eyebrow">MerrinLab Classic</p>
         <h1 id="panel-title">Classic 16-Step Sequencer</h1>
-        <p class="subtitle">Placeholder only. The full Classic UI has not been built yet.</p>
+        <p class="subtitle">Original-style placeholder only. The full Classic UI has not been built yet.</p>
       </div>
       <section class="mode-card" aria-label="Classic status">
         <h2>Status</h2>
-        <p>Classic / Original is the faithful Ray-style 16-step panel specification.</p>
+        <p>Classic / Original is the faithful Ray-style 16-step quantized sequencer panel.</p>
       </section>
     </header>
+
+    <section class="control-strip" aria-label="Classic original-style control sections">
+      <div class="control-block">
+        <h2>Step rows</h2>
+        <p>Active Step, Gate At Step Selection, Coarse Voltage, Fine Voltage, and Step Duration rows are required.</p>
+      </div>
+      <div class="control-block">
+        <h2>Duration matrix</h2>
+        <p>The Step Duration LED matrix is required. Do not replace it with only a simple 4-LED display.</p>
+      </div>
+      <div class="control-block">
+        <h2>Clock</h2>
+        <p>Master Clock Rate, Clock Source, Clock Out, and External Clock In belong to the Classic panel.</p>
+      </div>
+      <div class="control-block">
+        <h2>Sequencer mode</h2>
+        <p>Sequencer Mode, Action At Step, Action Step, and manual control sections are part of the original layout.</p>
+      </div>
+      <div class="control-block">
+        <h2>Outputs</h2>
+        <p>Trigger Out, Gate Out, Multi-Gate / Trigger, Control Voltage Out, and Portamento are required.</p>
+      </div>
+      <div class="control-block">
+        <h2>Not digital</h2>
+        <p>No Bank A/B, no 32-step mode, no Play Range, and no M/S/A/G Clean controls on the Classic panel.</p>
+      </div>
+    </section>
 
     <section class="status-strip" aria-label="Classic faceplate placeholder summary">
       <div>
@@ -39,15 +66,37 @@
       </div>
     </section>
 
+    <section class="steps" aria-label="Classic original-style required rows preview">
+      <h2 class="section-title">Required Classic Panel Structure</h2>
+      <div class="step-grid">
+        <article class="step active"><h3>01</h3><span class="label">Active Step</span><span class="step-led on"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>02</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>03</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>04</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>05</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>06</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>07</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>08</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>09</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>10</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>11</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>12</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>13</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>14</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>15</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+        <article class="step"><h3>16</h3><span class="label">Active Step</span><span class="step-led"></span><span class="label">Gate At Step</span><button type="button">On / Off</button><span class="label">Coarse Voltage</span><span class="label">Fine Voltage</span><span class="label">Duration</span></article>
+      </div>
+    </section>
+
     <section class="io-area" aria-label="Classic placeholder details">
       <div class="io-block">
-        <h2>Classic spec rule</h2>
-        <p>This page is reserved for the faithful original-style panel. It should preserve the Ray-style 16-step structure, including the Step Duration LED matrix section.</p>
+        <h2>Step Duration LED Matrix Required</h2>
+        <p>The Classic panel must include the original Step Duration LED matrix section with 8 / 4 / 2 / 1 duration labelling. This is part of the Classic identity and must not be simplified away.</p>
         <p><a href="docs/Classic_Faceplate_Spec_v0.1.md">Open Classic Faceplate Spec v0.1</a></p>
       </div>
       <div class="io-block">
-        <h2>Not built here yet</h2>
-        <p>Do not build the full Classic UI in this placeholder page. Do not add 32-step banking, M/S/A/G controls, audio, MIDI, timing engine, or plugin behaviour.</p>
+        <h2>Digital version remains separate</h2>
+        <p>The expanded MerrinLab Digital version keeps 32-step banking, Edit Bank, Play Range, Pitch / Length / Gate, and compact M/S/A/G controls.</p>
         <p><a href="digital.html">Open Digital mockup</a></p>
       </div>
     </section>
