@@ -24,7 +24,7 @@
       </section>
     </header>
 
-    <section class="control-strip" aria-label="Bank and transport controls">
+    <section class="control-strip" aria-label="Bank, transport, clock, and direction controls">
       <div class="control-block">
         <h2>Edit Bank</h2>
         <div class="button-row">
@@ -50,6 +50,7 @@
           <button type="button">Run</button>
           <button type="button">Stop</button>
           <button type="button">Reset</button>
+          <button type="button">Manual Step</button>
         </div>
       </div>
 
@@ -68,6 +69,24 @@
           <button class="toggle active" type="button">Quantized</button>
         </div>
       </div>
+
+      <div class="control-block">
+        <h2>Gate Mode</h2>
+        <div class="button-row">
+          <button class="toggle active" type="button">Single</button>
+          <button class="toggle" type="button">Multi</button>
+        </div>
+        <p>Single gate or repeated gates for longer step lengths.</p>
+      </div>
+
+      <div class="control-block">
+        <h2>Direction</h2>
+        <div class="button-row">
+          <button class="toggle active" type="button">Forward</button>
+          <button class="toggle" type="button">Reverse</button>
+        </div>
+        <p>Direction display only. No timing logic yet.</p>
+      </div>
     </section>
 
     <section class="status-strip" aria-label="Current status display">
@@ -85,7 +104,12 @@
       </div>
       <div>
         <span class="label">Length code</span>
-        <span class="led-code" aria-label="4-bit duration code"><i></i><i></i><i class="on"></i><i class="on"></i></span>
+        <span class="led-code labelled" aria-label="4-bit duration code labelled 8 4 2 1">
+          <span class="bit"><em>8</em><i></i></span>
+          <span class="bit"><em>4</em><i></i></span>
+          <span class="bit"><em>2</em><i class="on"></i></span>
+          <span class="bit"><em>1</em><i class="on"></i></span>
+        </span>
       </div>
     </section>
 
