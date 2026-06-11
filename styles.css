@@ -1,0 +1,264 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #15171a;
+  color: #eef1f3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #2c3238, #101214 60%);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 1px solid #57606a;
+  border-radius: 999px;
+  background: #23282e;
+  color: #f5f7f8;
+  padding: 0.45rem 0.75rem;
+  cursor: default;
+}
+
+button.active,
+.toggle.active {
+  border-color: #b8f2c7;
+  background: #153722;
+  box-shadow: 0 0 0 1px rgba(184, 242, 199, 0.25);
+}
+
+.panel {
+  width: min(1800px, calc(100vw - 24px));
+  margin: 12px auto;
+  padding: 18px;
+  border: 1px solid #3b424a;
+  border-radius: 24px;
+  background: rgba(22, 25, 29, 0.94);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+.panel-header,
+.control-strip,
+.status-strip,
+.io-area {
+  display: grid;
+  gap: 14px;
+}
+
+.panel-header {
+  grid-template-columns: minmax(280px, 1fr) minmax(260px, 380px);
+  align-items: stretch;
+  margin-bottom: 14px;
+}
+
+.eyebrow {
+  margin: 0 0 0.25rem;
+  color: #aab3bd;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0.35rem;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1;
+}
+
+h2 {
+  margin-bottom: 0.7rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c7d0d9;
+}
+
+h3 {
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+}
+
+.subtitle,
+.control-block p,
+.mode-card p {
+  margin-bottom: 0;
+  color: #aab3bd;
+  font-size: 0.9rem;
+}
+
+.mode-card,
+.control-block,
+.status-strip > div,
+.step,
+.io-block {
+  border: 1px solid #343b43;
+  border-radius: 18px;
+  background: #1b2026;
+  padding: 14px;
+}
+
+.control-strip {
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  margin-bottom: 14px;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 0.7rem;
+}
+
+.button-row.three button {
+  flex: 1 1 auto;
+}
+
+.clock label,
+.step label {
+  display: grid;
+  gap: 5px;
+  color: #cbd4dc;
+  font-size: 0.78rem;
+}
+
+.clock input,
+.step input {
+  width: 100%;
+}
+
+.status-strip {
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  margin-bottom: 14px;
+}
+
+.status-strip strong {
+  display: block;
+  font-size: 1.7rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #97a2ad;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+}
+
+.led-code {
+  display: flex;
+  gap: 8px;
+}
+
+.led-code i,
+.step-led {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #39424c;
+  border: 1px solid #56606b;
+}
+
+.led-code i.on,
+.step-led.on {
+  background: #a6f4b8;
+  box-shadow: 0 0 16px rgba(166, 244, 184, 0.8);
+}
+
+.section-title {
+  margin: 8px 0 12px;
+}
+
+.step-grid {
+  display: grid;
+  grid-template-columns: repeat(16, minmax(92px, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.step {
+  min-width: 0;
+  padding: 10px;
+}
+
+.step.active {
+  border-color: #b8f2c7;
+}
+
+.step button {
+  width: 100%;
+  margin: 8px 0;
+  padding-inline: 0.25rem;
+}
+
+.io-area {
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+}
+
+.io-block ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.io-block li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #dbe2e8;
+}
+
+.jack {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #83b8ff;
+  background: #101418;
+}
+
+.jack.out {
+  border-color: #f0c36a;
+}
+
+@media (max-width: 1300px) {
+  .step-grid {
+    grid-template-columns: repeat(8, minmax(100px, 1fr));
+  }
+
+  .control-strip {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .panel-header,
+  .control-strip,
+  .status-strip,
+  .io-area {
+    grid-template-columns: 1fr;
+  }
+
+  .step-grid {
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+  }
+}
