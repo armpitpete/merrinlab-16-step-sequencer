@@ -1,1 +1,1 @@
-# merrinlab-16--step-sequencer
+# merrinlab-16-step-sequencer
