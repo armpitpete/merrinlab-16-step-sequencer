@@ -114,7 +114,7 @@ h3 {
 }
 
 .control-strip {
-  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  grid-template-columns: repeat(6, minmax(170px, 1fr));
   margin-bottom: 14px;
 }
 
@@ -164,6 +164,23 @@ h3 {
 .led-code {
   display: flex;
   gap: 8px;
+}
+
+.led-code.labelled {
+  align-items: end;
+}
+
+.bit {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  color: #97a2ad;
+  font-size: 0.68rem;
+  font-style: normal;
+}
+
+.bit em {
+  font-style: normal;
 }
 
 .led-code i,
@@ -238,6 +255,12 @@ h3 {
 
 .jack.out {
   border-color: #f0c36a;
+}
+
+@media (max-width: 1500px) {
+  .control-strip {
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+  }
 }
 
 @media (max-width: 1300px) {
