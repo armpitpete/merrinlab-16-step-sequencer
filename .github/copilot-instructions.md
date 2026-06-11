@@ -4,76 +4,61 @@
 
 Work in small, contained edits.
 
-This project is currently engine-first. Do not build the full visual interface before the timing engine works.
+This project is currently interface-first.
 
-## Current Project Focus
+Define the control layout before building the timing engine.
 
-The first working behaviour is a minimal timing engine trace.
+Do not turn an interface task into a full DSP, MIDI, plugin, or audio task.
 
-The engine should prove:
+## Current Focus
 
-- 16 steps exist
-- the clock runs
-- the current step advances in order
-- each step can have its own length in clock pulses
-- the trace shows the current clock tick, current step, and pulse position
-- Step 16 loops back to Step 1
+Build the first 16-step interface mockup.
 
-## Do Not Add Unless the Issue Explicitly Requests It
+The mockup must show:
+
+- Mode: Original / Clean
+- 16 visible step slots
+- pitch/value control per visible step
+- step-length control per visible step
+- gate on/off control per visible step
+- Edit Bank: A / B
+- Play Range: A / B / A+B
+- current step indicator area
+- clock section
+- start, stop, reset controls
+- status/output area
+- visible input/output connection area
+
+## Do Not Add Yet
 
 Do not add:
 
-- full graphical interface
 - audio engine
 - MIDI input
 - MIDI output
 - plugin export
-- skins or themes
-- animation
 - preset system
 - probability
 - ratcheting
 - swing
 - scale quantizing
 - pattern chaining
+- final skin polish
+- complex animation
 
-These can be added later after the timing engine is proven.
+## Report Format
 
-## Development Style
-
-Prefer simple, readable code.
-
-Prefer obvious names over clever names.
-
-Keep the first implementation easy to inspect in a terminal or console.
-
-Avoid large rewrites unless the issue asks for them.
-
-Do not change unrelated files.
-
-## Documentation Rules
-
-Keep docs clear and practical.
-
-Use plain language.
-
-Explain what the code does and how to run it.
-
-Do not write long theory notes unless requested.
-
-## Report Format After Each Change
-
-After completing a task, report:
+After each task, report:
 
 - files changed
 - what changed
-- how to run or inspect it
-- tests or checks run
-- any risks or limits
+- how to inspect it
+- checks run
+- risks or limits
 
 ## Good Enough Rule
 
-A change is good enough when it satisfies the issue without adding extra features.
+Stop when the issue is satisfied.
 
 Do not polish early.
 
