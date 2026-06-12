@@ -3,160 +3,31 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MerrinLab 16-Step Sequencer Mockup</title>
+  <title>MerrinLab 16-Step Sequencer</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="panel" aria-labelledby="panel-title">
+  <main class="panel landing-page" aria-labelledby="panel-title">
     <header class="panel-header">
       <div>
         <p class="eyebrow">MerrinLab</p>
         <h1 id="panel-title">16-Step Sequencer</h1>
-        <p class="subtitle">Interface mockup only. No audio, MIDI, plugin engine, or timing engine yet.</p>
+        <p class="subtitle">Choose a view. Both pages are visual prototypes only. No audio, MIDI, timing engine, or plugin export yet.</p>
       </div>
-      <section class="mode-card" aria-label="Mode selector">
-        <h2>Mode</h2>
-        <div class="button-row">
-          <button class="toggle active" type="button">Original</button>
-          <button class="toggle" type="button">Clean</button>
-        </div>
-        <p>Original = hardware/trim behaviour. Clean = expanded digital mode.</p>
-      </section>
     </header>
 
-    <section class="control-strip" aria-label="Bank, transport, clock, and direction controls">
-      <div class="control-block">
-        <h2>Edit Bank</h2>
-        <div class="button-row">
-          <button class="toggle active" type="button">A</button>
-          <button class="toggle" type="button">B</button>
-        </div>
-        <p>A edits 01–16. B edits 17–32.</p>
-      </div>
+    <section class="landing-grid" aria-label="Sequencer view choices">
+      <a class="landing-card" href="classic.html">
+        <span class="eyebrow">Classic</span>
+        <strong>Classic 16-Step Sequencer</strong>
+        <span>Faithful Ray-style 16-step panel direction. Includes the Step Duration LED Matrix requirement.</span>
+      </a>
 
-      <div class="control-block">
-        <h2>Play Range</h2>
-        <div class="button-row three">
-          <button class="toggle active" type="button">A</button>
-          <button class="toggle" type="button">B</button>
-          <button class="toggle" type="button">A+B</button>
-        </div>
-        <p>Choose what plays independently from what is edited.</p>
-      </div>
-
-      <div class="control-block transport">
-        <h2>Transport</h2>
-        <div class="button-row three">
-          <button type="button">Run</button>
-          <button type="button">Stop</button>
-          <button type="button">Reset</button>
-          <button type="button">Manual Step</button>
-        </div>
-      </div>
-
-      <div class="control-block clock">
-        <h2>Clock</h2>
-        <label>
-          Rate
-          <input type="range" min="40" max="240" value="120" />
-        </label>
-        <div class="button-row">
-          <button class="toggle active" type="button">Internal</button>
-          <button class="toggle" type="button">External</button>
-        </div>
-        <div class="button-row">
-          <button class="toggle" type="button">Normal</button>
-          <button class="toggle active" type="button">Quantized</button>
-        </div>
-      </div>
-
-      <div class="control-block">
-        <h2>Gate Mode</h2>
-        <div class="button-row">
-          <button class="toggle active" type="button">Single</button>
-          <button class="toggle" type="button">Multi</button>
-        </div>
-        <p>Single gate or repeated gates for longer step lengths.</p>
-      </div>
-
-      <div class="control-block">
-        <h2>Direction</h2>
-        <div class="button-row">
-          <button class="toggle active" type="button">Forward</button>
-          <button class="toggle" type="button">Reverse</button>
-        </div>
-        <p>Direction display only. No timing logic yet.</p>
-      </div>
-    </section>
-
-    <section class="status-strip" aria-label="Current status display">
-      <div>
-        <span class="label">Current step</span>
-        <strong>01</strong>
-      </div>
-      <div>
-        <span class="label">Current bank</span>
-        <strong>A</strong>
-      </div>
-      <div>
-        <span class="label">Status</span>
-        <strong>Stopped</strong>
-      </div>
-      <div>
-        <span class="label">Length code</span>
-        <span class="led-code labelled" aria-label="4-bit duration code labelled 8 4 2 1">
-          <span class="bit"><em>8</em><i></i></span>
-          <span class="bit"><em>4</em><i></i></span>
-          <span class="bit"><em>2</em><i class="on"></i></span>
-          <span class="bit"><em>1</em><i class="on"></i></span>
-        </span>
-      </div>
-    </section>
-
-    <section class="steps" aria-label="Sixteen visible step slots">
-      <h2 class="section-title">Visible Step Bank</h2>
-      <div class="step-grid">
-        <article class="step active"><h3>01</h3><label>Pitch<input type="range" min="0" max="127" value="60" /></label><label>Length<input type="range" min="1" max="16" value="4" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led on"></span></article>
-        <article class="step"><h3>02</h3><label>Pitch<input type="range" min="0" max="127" value="64" /></label><label>Length<input type="range" min="1" max="16" value="2" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>03</h3><label>Pitch<input type="range" min="0" max="127" value="67" /></label><label>Length<input type="range" min="1" max="16" value="1" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>04</h3><label>Pitch<input type="range" min="0" max="127" value="72" /></label><label>Length<input type="range" min="1" max="16" value="1" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>05</h3><label>Pitch<input type="range" min="0" max="127" value="60" /></label><label>Length<input type="range" min="1" max="16" value="8" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>06</h3><label>Pitch<input type="range" min="0" max="127" value="62" /></label><label>Length<input type="range" min="1" max="16" value="2" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>07</h3><label>Pitch<input type="range" min="0" max="127" value="65" /></label><label>Length<input type="range" min="1" max="16" value="2" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>08</h3><label>Pitch<input type="range" min="0" max="127" value="69" /></label><label>Length<input type="range" min="1" max="16" value="4" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>09</h3><label>Pitch<input type="range" min="0" max="127" value="60" /></label><label>Length<input type="range" min="1" max="16" value="1" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>10</h3><label>Pitch<input type="range" min="0" max="127" value="63" /></label><label>Length<input type="range" min="1" max="16" value="1" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>11</h3><label>Pitch<input type="range" min="0" max="127" value="67" /></label><label>Length<input type="range" min="1" max="16" value="2" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>12</h3><label>Pitch<input type="range" min="0" max="127" value="70" /></label><label>Length<input type="range" min="1" max="16" value="2" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>13</h3><label>Pitch<input type="range" min="0" max="127" value="72" /></label><label>Length<input type="range" min="1" max="16" value="4" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>14</h3><label>Pitch<input type="range" min="0" max="127" value="69" /></label><label>Length<input type="range" min="1" max="16" value="4" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>15</h3><label>Pitch<input type="range" min="0" max="127" value="65" /></label><label>Length<input type="range" min="1" max="16" value="8" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-        <article class="step"><h3>16</h3><label>Pitch<input type="range" min="0" max="127" value="62" /></label><label>Length<input type="range" min="1" max="16" value="1" /></label><button type="button">Gate</button><div class="step-status" aria-label="Clean-mode status controls"><button type="button" title="Mute">M</button><button type="button" title="Skip">S</button><button type="button" title="Accent">A</button><button type="button" title="Glide">G</button></div><span class="step-led"></span></article>
-      </div>
-    </section>
-
-    <section class="io-area" aria-label="Input and output connection area">
-      <div class="io-block">
-        <h2>Inputs</h2>
-        <ul>
-          <li><span class="jack"></span>Clock In</li>
-          <li><span class="jack"></span>Reset In</li>
-          <li><span class="jack"></span>Run/Stop In</li>
-          <li><span class="jack"></span>Transpose In</li>
-        </ul>
-      </div>
-      <div class="io-block">
-        <h2>Outputs</h2>
-        <ul>
-          <li><span class="jack out"></span>Pitch Out</li>
-          <li><span class="jack out"></span>Gate Out</li>
-          <li><span class="jack out"></span>Trigger Out</li>
-          <li><span class="jack out"></span>Clock Out</li>
-          <li><span class="jack out"></span>Reset Out</li>
-          <li><span class="jack out"></span>Step Index Out</li>
-          <li><span class="jack out"></span>Accent Out</li>
-        </ul>
-      </div>
+      <a class="landing-card" href="digital.html">
+        <span class="eyebrow">Digital</span>
+        <strong>Digital 16/32-Step Sequencer</strong>
+        <span>Expanded MerrinLab version with Bank A/B, Play Range, and Clean-mode controls.</span>
+      </a>
     </section>
   </main>
 </body>
