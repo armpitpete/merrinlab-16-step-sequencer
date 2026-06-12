@@ -69,24 +69,26 @@
         </div>
       </div>
 
-      <div class="control-block hardware-block clock-rate-block">
+      <div class="control-block hardware-block master-clock-panel">
         <h2>Master Clock Rate</h2>
-        <div class="number-arc" aria-hidden="true"><span>0</span><span>5</span><span>10</span></div>
-        <div class="mini-dial large" aria-hidden="true"></div>
-        <div class="clock-source-note">Master</div>
-      </div>
-
-      <div class="control-block hardware-block clock-source-block">
-        <h2>Clock Source</h2>
-        <div class="clock-source-grid" aria-label="Clock source placeholders">
-          <span>Q-Clock</span><i></i>
-          <span>Internal</span><i></i>
-          <span>External</span><i></i>
-          <span>Normal</span><i></i>
+        <div class="master-clock-layout">
+          <div>
+            <div class="number-arc" aria-hidden="true"><span>0</span><span>5</span><span>10</span></div>
+            <div class="mini-dial large" aria-hidden="true"></div>
+          </div>
+          <div class="master-clock-right">
+            <span><i class="jack-dot"></i>Master</span>
+            <span><i class="jack-dot"></i>Q-Clock</span>
+            <span><i class="jack-dot large-jack"></i>Clock Out</span>
+            <span><i class="jack-dot large-jack"></i>Ext. Clk In</span>
+          </div>
         </div>
-        <div class="jack-row" aria-label="Clock input output placeholders">
-          <span><i class="jack-dot"></i>Clock Out</span>
-          <span><i class="jack-dot"></i>Ext. Clk In</span>
+        <div class="clock-source-line" aria-label="Clock source placeholders">
+          <span>Q-Clock</span>
+          <span>Internal</span><i></i>
+          <span>Clock Source</span>
+          <i></i><span>External</span>
+          <span>Normal</span>
         </div>
       </div>
 
@@ -94,6 +96,7 @@
         <h2>Sequencer Mode</h2>
         <div class="sequencer-mode-layout">
           <div>
+            <div class="number-arc action-arc" aria-hidden="true"><span>5</span><span>10</span><span>16</span></div>
             <div class="mini-dial" aria-hidden="true"></div>
             <span>Action Step</span>
           </div>
