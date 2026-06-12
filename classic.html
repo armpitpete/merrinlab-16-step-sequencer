@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="classic.css" />
   <link rel="stylesheet" href="classic-duration.css" />
+  <link rel="stylesheet" href="classic-master-clock.css" />
 </head>
 <body class="classic-view">
   <main class="panel" aria-labelledby="panel-title">
@@ -71,26 +72,33 @@
         </div>
       </div>
 
-      <div class="control-block hardware-block master-clock-panel">
+      <div class="control-block hardware-block master-clock-panel original-master-clock">
         <h2>Master Clock Rate</h2>
-        <div class="master-clock-layout">
-          <div>
-            <div class="number-arc" aria-hidden="true"><span>0</span><span>5</span><span>10</span></div>
-            <div class="mini-dial large" aria-hidden="true"></div>
+        <div class="master-clock-original-top">
+          <div class="master-rate-face" aria-hidden="true">
+            <span class="rate-num n0">0</span><span class="rate-num n1">1</span><span class="rate-num n2">2</span><span class="rate-num n3">3</span><span class="rate-num n4">4</span><span class="rate-num n5">5</span><span class="rate-num n6">6</span><span class="rate-num n7">7</span><span class="rate-num n8">8</span><span class="rate-num n9">9</span><span class="rate-num n10">10</span>
+            <div class="master-rate-dial"></div>
           </div>
-          <div class="master-clock-right">
-            <span><i class="jack-dot"></i>Master</span>
-            <span><i class="jack-dot"></i>Q-Clock</span>
-            <span><i class="jack-dot large-jack"></i>Clock Out</span>
-            <span><i class="jack-dot large-jack"></i>Ext. Clk In</span>
+          <div class="master-clock-small-jacks">
+            <span><i class="classic-master-jack"></i>Master</span>
+            <span><i class="classic-master-jack"></i>Q-Clock</span>
+          </div>
+          <div class="master-clock-right-jacks">
+            <span><strong>Ext. Start</strong><i class="classic-master-jack large"></i></span>
+            <span><strong>Clock Out</strong><i class="classic-master-jack large"></i></span>
+            <span><strong>Ext. Clk In</strong><i class="classic-master-jack large"></i></span>
           </div>
         </div>
-        <div class="clock-source-line" aria-label="Clock source placeholders">
+        <div class="clock-source-original" aria-label="Clock source placeholders">
           <span>Q-Clock</span>
-          <span>Internal</span><i></i>
-          <span>Clock Source</span>
-          <i></i><span>External</span>
-          <span>Normal</span>
+          <span class="source-line"></span>
+          <span>Internal</span>
+          <i class="classic-master-jack large"></i>
+          <span class="source-title">Clock<br>Source</span>
+          <i class="classic-master-jack large"></i>
+          <span>External</span>
+          <span class="source-line"></span>
+          <span class="normal-label">Normal</span>
         </div>
       </div>
 
