@@ -1,0 +1,71 @@
+/* Classic Step Duration block tuning only.
+   Purpose: make the Step Duration matrix use its panel space better
+   without changing the rest of the Classic lower strip. */
+
+.classic-view .compact-duration-matrix {
+  justify-items: center;
+  align-content: start;
+  padding-inline: 0.55rem !important;
+}
+
+.classic-view .compact-duration-matrix h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.classic-view .duration-bit-labels,
+.classic-view .duration-bit-row {
+  grid-template-columns: repeat(4, 1.12rem);
+  gap: 0.42rem;
+}
+
+.classic-view .duration-bit-labels {
+  width: max-content;
+  font-size: 0.68rem;
+}
+
+.classic-view .duration-bit-row i {
+  width: 0.78rem;
+  height: 0.78rem;
+}
+
+.classic-view .compact-duration-matrix p {
+  width: 100%;
+  max-width: 8.8rem;
+  margin: 0.45rem 0 0.28rem;
+  text-align: left;
+  font-size: 0.58rem;
+}
+
+.classic-view .classic-led-matrix.hardware-matrix {
+  grid-template-columns: repeat(4, 0.92rem);
+  gap: 0.42rem;
+  padding-right: 1.08rem;
+}
+
+.classic-view .classic-led-matrix.hardware-matrix i {
+  width: 0.92rem;
+  height: 0.92rem;
+}
+
+.classic-view .classic-led-matrix.hardware-matrix::after {
+  right: 0.12rem;
+  width: 0.56rem;
+  border-right-width: 1px;
+  background:
+    linear-gradient(#aeb8c2, #aeb8c2) right top / 0.56rem 1px no-repeat,
+    linear-gradient(#aeb8c2, #aeb8c2) right 25% / 0.42rem 1px no-repeat,
+    linear-gradient(#aeb8c2, #aeb8c2) right 50% / 0.56rem 1px no-repeat,
+    linear-gradient(#aeb8c2, #aeb8c2) right 75% / 0.42rem 1px no-repeat,
+    linear-gradient(#aeb8c2, #aeb8c2) right bottom / 0.56rem 1px no-repeat;
+}
+
+@media (max-width: 1500px) {
+  .classic-view .compact-duration-matrix {
+    justify-items: start;
+  }
+
+  .classic-view .compact-duration-matrix h2 {
+    text-align: left;
+  }
+}
