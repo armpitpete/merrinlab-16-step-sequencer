@@ -1,0 +1,181 @@
+/* Classic Master Clock section tuning only.
+   Purpose: make the Master Clock Rate / Clock Source block follow the original lower-panel layout. */
+
+.classic-view .original-master-clock {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-content: stretch;
+  gap: 0.18rem;
+  padding: 0.5rem 0.62rem !important;
+}
+
+.classic-view .original-master-clock h2 {
+  text-align: center;
+  margin-bottom: 0.06rem;
+}
+
+.classic-view .master-clock-original-top {
+  display: grid;
+  grid-template-columns: minmax(5.7rem, auto) minmax(4.4rem, auto) minmax(4.8rem, auto);
+  gap: 0.55rem;
+  align-items: start;
+}
+
+.classic-view .master-rate-face {
+  position: relative;
+  width: 5.35rem;
+  height: 4.85rem;
+}
+
+.classic-view .master-rate-dial {
+  position: absolute;
+  left: 1.25rem;
+  top: 1.25rem;
+  width: 2.55rem;
+  height: 2.55rem;
+  border-radius: 50%;
+  border: 1px solid #7b8792;
+  background:
+    radial-gradient(circle at 50% 50%, #15191e 0 39%, transparent 40%),
+    repeating-conic-gradient(from -130deg, rgba(216,225,232,0.72) 0 2deg, transparent 2deg 10deg),
+    radial-gradient(circle at 38% 30%, #303840, #090c0f 66%);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.12), 0 2px 5px rgba(0,0,0,0.65);
+}
+
+.classic-view .master-rate-dial::before {
+  content: "+";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #d7dee5;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.classic-view .master-rate-dial::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0.4rem;
+  width: 2px;
+  height: 0.86rem;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.classic-view .rate-num {
+  position: absolute;
+  color: #d5dde5;
+  font-size: 0.56rem;
+  line-height: 1;
+}
+
+.classic-view .rate-num.n0 { left: 1.1rem; top: 4.05rem; }
+.classic-view .rate-num.n1 { left: 0.32rem; top: 3.34rem; }
+.classic-view .rate-num.n2 { left: 0.02rem; top: 2.44rem; }
+.classic-view .rate-num.n3 { left: 0.28rem; top: 1.52rem; }
+.classic-view .rate-num.n4 { left: 0.9rem; top: 0.74rem; }
+.classic-view .rate-num.n5 { left: 2.17rem; top: 0.34rem; }
+.classic-view .rate-num.n6 { left: 3.42rem; top: 0.74rem; }
+.classic-view .rate-num.n7 { left: 4.08rem; top: 1.52rem; }
+.classic-view .rate-num.n8 { left: 4.28rem; top: 2.44rem; }
+.classic-view .rate-num.n9 { left: 4.03rem; top: 3.34rem; }
+.classic-view .rate-num.n10 { left: 3.18rem; top: 4.05rem; }
+
+.classic-view .master-clock-small-jacks,
+.classic-view .master-clock-right-jacks {
+  display: grid;
+  gap: 0.48rem;
+  align-content: start;
+  color: #c7d0d9;
+  font-size: 0.58rem;
+  line-height: 1.05;
+}
+
+.classic-view .master-clock-small-jacks span,
+.classic-view .master-clock-right-jacks span {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.34rem;
+}
+
+.classic-view .master-clock-right-jacks span {
+  grid-template-columns: 1fr auto;
+}
+
+.classic-view .master-clock-right-jacks strong {
+  font-size: 0.56rem;
+  text-align: right;
+}
+
+.classic-view .clock-source-original {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr auto;
+  align-items: center;
+  gap: 0.32rem;
+  margin-top: 0.1rem;
+  color: #c7d0d9;
+  font-size: 0.56rem;
+}
+
+.classic-view .clock-source-original .source-line {
+  height: 1px;
+  background: #aeb8c2;
+}
+
+.classic-view .clock-source-original .source-title {
+  display: grid;
+  justify-items: center;
+  gap: 0.12rem;
+  color: #d5dde5;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.classic-view .clock-source-original .normal-label {
+  grid-column: 1;
+  margin-top: -0.08rem;
+  align-self: start;
+}
+
+.classic-view .master-clock-original-footer {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: end;
+  gap: 0.4rem;
+  margin-top: 0.16rem;
+  color: #c7d0d9;
+  font-size: 0.54rem;
+}
+
+.classic-view .classic-master-jack {
+  display: inline-block;
+  width: 0.82rem;
+  height: 0.82rem;
+  border-radius: 50%;
+  border: 1px solid #8a96a2;
+  background: radial-gradient(circle at 50% 50%, #06080a 0 35%, #2d343c 37% 58%, #07090b 60%);
+}
+
+.classic-view .classic-master-jack.large {
+  width: 1.62rem;
+  height: 1.62rem;
+  background:
+    linear-gradient(#aeb8c2, #aeb8c2) center / 1px 100% no-repeat,
+    linear-gradient(90deg, #aeb8c2, #aeb8c2) center / 100% 1px no-repeat,
+    radial-gradient(circle at 50% 50%, #06080a 0 35%, #2d343c 37% 58%, #07090b 60%);
+}
+
+@media (max-width: 1500px) {
+  .classic-view .master-clock-original-top,
+  .classic-view .clock-source-original {
+    grid-template-columns: 1fr;
+  }
+
+  .classic-view .clock-source-original .source-line {
+    display: none;
+  }
+}
