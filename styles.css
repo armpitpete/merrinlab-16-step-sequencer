@@ -503,6 +503,171 @@ input[type="range"] {
   border-color: #f0c36a;
 }
 
+.classic-view .panel {
+  padding: 12px 14px;
+  border-radius: 18px;
+}
+
+.classic-view .panel-header {
+  grid-template-columns: minmax(360px, 1fr) minmax(240px, 340px);
+  gap: 10px;
+  align-items: end;
+  margin-bottom: 8px;
+}
+
+.classic-view .eyebrow {
+  margin-bottom: 0.16rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+}
+
+.classic-view h1 {
+  margin-bottom: 0.2rem;
+  font-size: clamp(1.65rem, 3vw, 3rem);
+  letter-spacing: 0.04em;
+}
+
+.classic-view .subtitle {
+  font-size: 0.74rem;
+}
+
+.classic-view .mode-card {
+  padding: 9px 11px;
+  border-radius: 11px;
+}
+
+.classic-view .mode-card h2 {
+  margin-bottom: 0.35rem;
+  font-size: 0.62rem;
+}
+
+.classic-view .mode-card p {
+  font-size: 0.72rem;
+  line-height: 1.25;
+}
+
+.classic-view .status-strip {
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.classic-view .status-strip > div {
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+
+.classic-view .status-strip strong {
+  font-size: 1.2rem;
+}
+
+.classic-view .label {
+  margin-bottom: 0.22rem;
+  font-size: 0.58rem;
+}
+
+.classic-view .classic-panel {
+  padding: 8px 48px;
+  margin-bottom: 8px;
+}
+
+.classic-view .section-title {
+  margin: 0 0 5px;
+  font-size: 0.62rem;
+}
+
+.classic-view .classic-step-row {
+  grid-template-columns: 150px repeat(16, minmax(47px, 1fr));
+  min-width: 1160px;
+  gap: 4px;
+  padding: 2px 0;
+}
+
+.classic-view .classic-step-row.step-numbers {
+  grid-template-columns: 150px repeat(16, minmax(47px, 1fr));
+  font-size: 0.75rem;
+}
+
+.classic-view .classic-step-row strong {
+  font-size: 0.56rem;
+}
+
+.classic-view .classic-step-row button {
+  padding: 0.13rem 0.16rem;
+  font-size: 0.54rem;
+}
+
+.classic-view .classic-knob {
+  width: 27px;
+  height: 27px;
+}
+
+.classic-view .classic-knob.small {
+  width: 22px;
+  height: 22px;
+}
+
+.classic-view .classic-bottom-strip {
+  grid-template-columns: 0.95fr 1.45fr 1.05fr 1.4fr 1.1fr 1.35fr;
+  gap: 7px;
+  margin-bottom: 8px;
+}
+
+.classic-view .classic-bottom-strip .control-block {
+  min-height: 76px;
+  padding: 7px 9px;
+  border-radius: 8px;
+}
+
+.classic-view .classic-bottom-strip .control-block h2 {
+  margin-bottom: 0.25rem;
+  font-size: 0.56rem;
+}
+
+.classic-view .classic-bottom-strip .control-block p {
+  font-size: 0.64rem;
+  line-height: 1.15;
+}
+
+.classic-view .classic-led-matrix {
+  grid-template-columns: repeat(4, 9px);
+  gap: 4px;
+  margin-top: 5px;
+}
+
+.classic-view .classic-led-matrix i {
+  width: 9px;
+  height: 9px;
+}
+
+.classic-view .led-code {
+  gap: 6px;
+}
+
+.classic-view .led-code i {
+  width: 10px;
+  height: 10px;
+}
+
+.classic-view .io-area {
+  gap: 8px;
+}
+
+.classic-view .io-block {
+  padding: 9px 12px;
+  border-radius: 10px;
+}
+
+.classic-view .io-block h2 {
+  margin-bottom: 0.35rem;
+  font-size: 0.6rem;
+}
+
+.classic-view .io-block p {
+  margin-bottom: 0.35rem;
+  font-size: 0.74rem;
+}
+
 @media (max-width: 1500px) {
   .control-strip,
   .classic-bottom-strip {
