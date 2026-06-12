@@ -91,6 +91,132 @@
   box-shadow: 0 0 8px rgba(166, 244, 184, 0.78);
 }
 
+.hardware-block {
+  display: grid;
+  align-content: start;
+  gap: 0.42rem;
+}
+
+.hardware-block h2 {
+  margin-bottom: 0.1rem;
+}
+
+.mini-dial {
+  width: 2rem;
+  height: 2rem;
+  justify-self: start;
+  border-radius: 50%;
+  border: 1px solid #5c6670;
+  background:
+    radial-gradient(circle at 50% 50%, #15191e 0 40%, transparent 41%),
+    repeating-conic-gradient(from -135deg, rgba(216,225,232,0.55) 0 2deg, transparent 2deg 12deg),
+    radial-gradient(circle at 38% 30%, #303840, #090c0f 66%);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.12), 0 2px 5px rgba(0,0,0,0.65);
+  position: relative;
+}
+
+.mini-dial.large {
+  width: 3.1rem;
+  height: 3.1rem;
+}
+
+.mini-dial::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0.34rem;
+  width: 2px;
+  height: 0.72rem;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.mini-dial.large::after {
+  top: 0.5rem;
+  height: 1rem;
+}
+
+.clock-source-note,
+.mode-options,
+.switch-pair,
+.jack-row,
+.jack-grid,
+.action-symbol-row {
+  color: #b7c1cb;
+  font-size: 0.56rem;
+  line-height: 1.12;
+}
+
+.clock-source-note {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.switch-pair {
+  display: grid;
+  grid-template-columns: auto 0.55rem auto 0.55rem;
+  gap: 0.28rem;
+  align-items: center;
+}
+
+.switch-pair i,
+.action-symbol-row i {
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 50%;
+  border: 1px solid #68737d;
+  background: #1e252c;
+}
+
+.mode-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.22rem;
+}
+
+.mode-options span {
+  padding: 0.16rem 0.22rem;
+  border: 1px solid #46505a;
+  border-radius: 4px;
+  text-align: center;
+  background: #151a1f;
+}
+
+.action-symbol-row {
+  display: grid;
+  grid-template-columns: auto 0.56rem auto;
+  gap: 0.32rem;
+  align-items: center;
+}
+
+.jack-row,
+.jack-grid {
+  display: grid;
+  gap: 0.28rem;
+}
+
+.jack-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.jack-row span,
+.jack-grid span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.jack-dot {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 0.66rem;
+  height: 0.66rem;
+  border-radius: 50%;
+  border: 1px solid #8a96a2;
+  background: radial-gradient(circle at 50% 50%, #06080a 0 35%, #2d343c 37% 58%, #07090b 60%);
+}
+
 .classic-footer-strip {
   display: flex;
   flex-wrap: wrap;
