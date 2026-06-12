@@ -1,0 +1,71 @@
+/* Classic-only presentation refinements.
+   This file keeps classic.html looking like a compact panel prototype,
+   without changing digital.html. */
+
+.classic-view .panel-header.classic-faceplate-header {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 10px;
+  margin-bottom: 7px;
+}
+
+.classic-view .classic-faceplate-header h1 {
+  margin-bottom: 0.14rem;
+}
+
+.classic-view .classic-faceplate-header .subtitle {
+  max-width: 42rem;
+}
+
+.classic-faceplate-meta {
+  margin: 0 0 0.2rem;
+  padding: 0.44rem 0.62rem;
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #171b20, #12161a);
+  color: #aeb8c2;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.classic-view .classic-panel {
+  margin-top: 0;
+}
+
+.classic-footer-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--line-soft);
+  border-radius: 9px;
+  background: linear-gradient(180deg, #171b20, #111519);
+  color: #aeb8c2;
+  font-size: 0.68rem;
+}
+
+.classic-footer-strip span {
+  color: #c7d0d9;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.classic-footer-strip a {
+  color: #cdb3ff;
+}
+
+@media (max-width: 900px) {
+  .classic-view .panel-header.classic-faceplate-header {
+    grid-template-columns: 1fr;
+  }
+
+  .classic-faceplate-meta {
+    white-space: normal;
+  }
+}
