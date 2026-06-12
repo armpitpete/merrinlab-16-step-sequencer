@@ -51,7 +51,7 @@
       </div>
     </section>
 
-    <section class="classic-bottom-strip" aria-label="Classic bottom control strip placeholders">
+    <section class="classic-bottom-strip complete-bottom-strip" aria-label="Classic bottom control strip placeholders">
       <div class="control-block duration-matrix compact-duration-matrix">
         <h2>Step Duration</h2>
         <div class="duration-bit-labels" aria-label="Duration bit labels 8 4 2 1">
@@ -71,14 +71,18 @@
 
       <div class="control-block hardware-block clock-rate-block">
         <h2>Master Clock Rate</h2>
+        <div class="number-arc" aria-hidden="true"><span>0</span><span>5</span><span>10</span></div>
         <div class="mini-dial large" aria-hidden="true"></div>
         <div class="clock-source-note">Master</div>
       </div>
 
       <div class="control-block hardware-block clock-source-block">
         <h2>Clock Source</h2>
-        <div class="switch-pair" aria-label="Clock source switch placeholders">
-          <span>Internal</span><i></i><span>External</span><i></i>
+        <div class="clock-source-grid" aria-label="Clock source placeholders">
+          <span>Q-Clock</span><i></i>
+          <span>Internal</span><i></i>
+          <span>External</span><i></i>
+          <span>Normal</span><i></i>
         </div>
         <div class="jack-row" aria-label="Clock input output placeholders">
           <span><i class="jack-dot"></i>Clock Out</span>
@@ -86,31 +90,63 @@
         </div>
       </div>
 
-      <div class="control-block hardware-block sequencer-mode-block">
+      <div class="control-block hardware-block sequencer-mode-block wide-block">
         <h2>Sequencer Mode</h2>
-        <div class="mode-options" aria-label="Sequencer mode placeholders">
-          <span>Reverse</span><span>Reset</span><span>Stop</span><span>None</span>
+        <div class="sequencer-mode-layout">
+          <div>
+            <div class="mini-dial" aria-hidden="true"></div>
+            <span>Action Step</span>
+          </div>
+          <div class="mode-options" aria-label="Sequencer mode placeholders">
+            <span>Reverse</span><span>Reset</span><span>Stop</span><span>None / 16 Step</span>
+          </div>
+          <div class="action-switches" aria-label="Action selection placeholders">
+            <span>Use Action</span><i></i>
+            <span>Random 16</span><i></i>
+          </div>
         </div>
-        <div class="mini-dial" aria-hidden="true"></div>
       </div>
 
-      <div class="control-block hardware-block action-step-block">
-        <h2>Action At Step</h2>
-        <div class="mini-dial" aria-hidden="true"></div>
-        <div class="action-symbol-row" aria-hidden="true">
-          <span>Reset</span><i></i><span>Use Action</span>
+      <div class="control-block hardware-block manual-control-block wide-block">
+        <h2>Manual Control</h2>
+        <div class="manual-control-grid" aria-label="Manual control placeholders">
+          <span><i class="manual-button"></i>Reset</span>
+          <span><i class="manual-button"></i>Stop/Run</span>
+          <span><i class="manual-arrow left"></i>Back</span>
+          <span><i class="manual-arrow right"></i>Forward</span>
         </div>
       </div>
 
-      <div class="control-block hardware-block outputs-block">
-        <h2>Outputs</h2>
-        <div class="jack-grid" aria-label="Output jack placeholders">
-          <span><i class="jack-dot"></i>Trigger Out</span>
-          <span><i class="jack-dot"></i>Gate Out</span>
-          <span><i class="jack-dot"></i>Multi-Gate / Trigger</span>
-          <span><i class="jack-dot"></i>Control Voltage Out</span>
-          <span><i class="jack-dot"></i>Portamento</span>
-        </div>
+      <div class="control-block hardware-block portamento-block">
+        <h2>Portamento</h2>
+        <div class="number-arc" aria-hidden="true"><span>0</span><span>5</span><span>10</span></div>
+        <div class="mini-dial large" aria-hidden="true"></div>
+      </div>
+
+      <div class="control-block hardware-block output-group triggers-block">
+        <h2>Triggers Out</h2>
+        <div class="paired-jacks"><i class="jack-dot"></i><i class="jack-dot"></i></div>
+      </div>
+
+      <div class="control-block hardware-block output-group gates-block">
+        <h2>Gates Out</h2>
+        <div class="paired-jacks"><i class="jack-dot"></i><i class="jack-dot"></i></div>
+      </div>
+
+      <div class="control-block hardware-block output-group multi-gate-block">
+        <h2>Multi-Gate/Trigger</h2>
+        <div class="paired-jacks"><i class="jack-dot"></i><i class="jack-dot"></i></div>
+        <span class="tiny-note">Normal Gate/Trigger</span>
+      </div>
+
+      <div class="control-block hardware-block output-group cv-out-block">
+        <h2>Control Voltage Out</h2>
+        <div class="paired-jacks"><i class="jack-dot"></i><i class="jack-dot"></i></div>
+      </div>
+
+      <div class="control-block hardware-block output-group cv-out-block second-cv">
+        <h2>Control Voltage Out</h2>
+        <div class="paired-jacks"><i class="jack-dot"></i><i class="jack-dot"></i></div>
       </div>
     </section>
 
