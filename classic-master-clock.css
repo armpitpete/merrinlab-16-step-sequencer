@@ -4,15 +4,15 @@
 .classic-view .original-master-clock {
   position: relative;
   display: block;
-  min-height: 8.15rem;
-  padding: 0.42rem 0.58rem !important;
+  min-height: 7.2rem;
+  padding: 0.34rem 0.5rem !important;
   overflow: hidden;
 }
 
 .classic-view .original-master-clock h2 {
   position: absolute;
   left: 0.7rem;
-  top: 0.38rem;
+  top: 0.34rem;
   margin: 0;
   text-align: left;
 }
@@ -23,18 +23,18 @@
 
 .classic-view .master-rate-face {
   position: absolute;
-  left: 0.7rem;
-  top: 1.35rem;
-  width: 4.85rem;
-  height: 4.35rem;
+  left: 0.58rem;
+  top: 1.22rem;
+  width: 4.4rem;
+  height: 3.9rem;
 }
 
 .classic-view .master-rate-dial {
   position: absolute;
-  left: 1.18rem;
-  top: 1.12rem;
-  width: 2.25rem;
-  height: 2.25rem;
+  left: 1.06rem;
+  top: 0.98rem;
+  width: 2.12rem;
+  height: 2.12rem;
   border-radius: 50%;
   border: 1px solid #7b8792;
   background:
@@ -52,16 +52,16 @@
   place-items: center;
   color: #d7dee5;
   font-weight: 700;
-  font-size: 0.76rem;
+  font-size: 0.72rem;
 }
 
 .classic-view .master-rate-dial::after {
   content: "";
   position: absolute;
   left: 50%;
-  top: 0.36rem;
+  top: 0.34rem;
   width: 2px;
-  height: 0.78rem;
+  height: 0.72rem;
   transform: translateX(-50%);
   border-radius: 2px;
   background: var(--accent);
@@ -70,28 +70,28 @@
 .classic-view .rate-num {
   position: absolute;
   color: #d5dde5;
-  font-size: 0.54rem;
+  font-size: 0.52rem;
   line-height: 1;
 }
 
-.classic-view .rate-num.n0 { left: 1.05rem; top: 3.68rem; }
-.classic-view .rate-num.n1 { left: 0.32rem; top: 3.02rem; }
-.classic-view .rate-num.n2 { left: 0.04rem; top: 2.22rem; }
-.classic-view .rate-num.n3 { left: 0.26rem; top: 1.38rem; }
-.classic-view .rate-num.n4 { left: 0.84rem; top: 0.66rem; }
-.classic-view .rate-num.n5 { left: 1.96rem; top: 0.3rem; }
-.classic-view .rate-num.n6 { left: 3.07rem; top: 0.66rem; }
-.classic-view .rate-num.n7 { left: 3.68rem; top: 1.38rem; }
-.classic-view .rate-num.n8 { left: 3.86rem; top: 2.22rem; }
-.classic-view .rate-num.n9 { left: 3.62rem; top: 3.02rem; }
-.classic-view .rate-num.n10 { left: 2.88rem; top: 3.68rem; }
+.classic-view .rate-num.n0 { left: 0.96rem; top: 3.38rem; }
+.classic-view .rate-num.n1 { left: 0.28rem; top: 2.78rem; }
+.classic-view .rate-num.n2 { left: 0.03rem; top: 2.04rem; }
+.classic-view .rate-num.n3 { left: 0.24rem; top: 1.28rem; }
+.classic-view .rate-num.n4 { left: 0.78rem; top: 0.6rem; }
+.classic-view .rate-num.n5 { left: 1.8rem; top: 0.26rem; }
+.classic-view .rate-num.n6 { left: 2.82rem; top: 0.6rem; }
+.classic-view .rate-num.n7 { left: 3.38rem; top: 1.28rem; }
+.classic-view .rate-num.n8 { left: 3.56rem; top: 2.04rem; }
+.classic-view .rate-num.n9 { left: 3.34rem; top: 2.78rem; }
+.classic-view .rate-num.n10 { left: 2.64rem; top: 3.38rem; }
 
 .classic-view .master-clock-small-jacks {
   position: absolute;
-  left: 5.35rem;
-  top: 1.88rem;
+  left: 4.82rem;
+  top: 1.58rem;
   display: grid;
-  gap: 0.56rem;
+  gap: 0.48rem;
   color: #c7d0d9;
   font-size: 0.58rem;
   line-height: 1.05;
@@ -101,15 +101,15 @@
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: 0.34rem;
+  gap: 0.3rem;
 }
 
 .classic-view .master-clock-right-jacks {
   position: absolute;
-  right: 2.15rem;
-  top: 0.82rem;
+  right: 0.85rem;
+  top: 0.55rem;
   display: grid;
-  gap: 0.36rem;
+  gap: 0.34rem;
   color: #c7d0d9;
   font-size: 0.58rem;
   line-height: 1.05;
@@ -117,9 +117,9 @@
 
 .classic-view .master-clock-right-jacks span {
   display: grid;
-  grid-template-columns: 3.7rem auto;
+  grid-template-columns: 3.4rem auto;
   align-items: center;
-  gap: 0.34rem;
+  gap: 0.32rem;
 }
 
 .classic-view .master-clock-right-jacks strong {
@@ -129,13 +129,13 @@
 
 .classic-view .clock-source-original {
   position: absolute;
-  left: 0.75rem;
-  right: 1.45rem;
-  bottom: 0.58rem;
+  left: 0.65rem;
+  right: 0.78rem;
+  bottom: 0.35rem;
   display: grid;
-  grid-template-columns: 4.9rem 11.4rem;
+  grid-template-columns: 4.25rem 10.15rem;
   align-items: end;
-  column-gap: 0.7rem;
+  column-gap: 0.48rem;
   color: #c7d0d9;
   font-size: 0.56rem;
 }
@@ -145,20 +145,20 @@
   display: grid;
   grid-template-rows: auto auto auto;
   justify-items: start;
-  gap: 0.12rem;
+  gap: 0.08rem;
 }
 
 .classic-view .q-clock-normal-switch i,
 .classic-view .clock-mode-switch i {
-  margin-left: 0.52rem;
+  margin-left: 0.58rem;
 }
 
 .classic-view .internal-external-switch,
 .classic-view .clock-source-switch {
   display: grid;
   justify-items: center;
-  gap: 0.12rem;
-  min-width: 9rem;
+  gap: 0.08rem;
+  min-width: 8.8rem;
 }
 
 .classic-view .internal-external-switch .source-title,
@@ -173,10 +173,10 @@
 
 .classic-view .source-select-line {
   display: grid;
-  grid-template-columns: auto 2.55rem auto 2.55rem auto;
+  grid-template-columns: auto 2.05rem auto 2.05rem auto;
   align-items: center;
   width: 100%;
-  gap: 0.24rem;
+  gap: 0.22rem;
 }
 
 .classic-view .source-select-line .source-line {
@@ -200,16 +200,16 @@
 
 .classic-view .classic-master-jack {
   display: inline-block;
-  width: 0.78rem;
-  height: 0.78rem;
+  width: 0.72rem;
+  height: 0.72rem;
   border-radius: 50%;
   border: 1px solid #8a96a2;
   background: radial-gradient(circle at 50% 50%, #06080a 0 35%, #2d343c 37% 58%, #07090b 60%);
 }
 
 .classic-view .classic-master-jack.large {
-  width: 1.42rem;
-  height: 1.42rem;
+  width: 1.28rem;
+  height: 1.28rem;
   background:
     linear-gradient(#aeb8c2, #aeb8c2) center / 1px 100% no-repeat,
     linear-gradient(90deg, #aeb8c2, #aeb8c2) center / 100% 1px no-repeat,
@@ -218,6 +218,6 @@
 
 @media (max-width: 1500px) {
   .classic-view .original-master-clock {
-    min-height: 13rem;
+    min-height: 12rem;
   }
 }
