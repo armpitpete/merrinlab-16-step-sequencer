@@ -133,32 +133,36 @@
   right: 0.75rem;
   bottom: 0.45rem;
   display: grid;
-  grid-template-columns: 3.9rem minmax(8rem, 1fr);
+  grid-template-columns: 6.9rem minmax(7.8rem, 1fr);
   align-items: end;
-  column-gap: 1.1rem;
+  column-gap: 0.85rem;
   color: #c7d0d9;
   font-size: 0.56rem;
 }
 
-.classic-view .q-clock-normal-switch {
+.classic-view .q-clock-normal-switch,
+.classic-view .clock-mode-switch {
   display: grid;
   grid-template-rows: auto auto auto;
   justify-items: start;
   gap: 0.16rem;
 }
 
-.classic-view .q-clock-normal-switch i {
+.classic-view .q-clock-normal-switch i,
+.classic-view .clock-mode-switch i {
   margin-left: 0.55rem;
 }
 
-.classic-view .internal-external-switch {
+.classic-view .internal-external-switch,
+.classic-view .clock-source-switch {
   display: grid;
   justify-items: center;
   gap: 0.22rem;
   min-width: 9rem;
 }
 
-.classic-view .internal-external-switch .source-title {
+.classic-view .internal-external-switch .source-title,
+.classic-view .clock-source-switch .source-title {
   display: grid;
   justify-items: center;
   color: #d5dde5;
@@ -179,6 +183,19 @@
   height: 1px;
   width: 100%;
   background: #aeb8c2;
+}
+
+.classic-view .internal-mode-label {
+  color: #9fadba;
+  font-size: 0.48rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.classic-view .external-input-note {
+  color: #9fadba;
+  font-size: 0.48rem;
+  line-height: 1;
 }
 
 .classic-view .classic-master-jack {
