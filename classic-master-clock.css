@@ -1,20 +1,24 @@
 /* Classic Master Clock section tuning only.
    Purpose: make the Master Clock Rate / Clock Source block follow the original lower-panel layout. */
 
+.classic-view .complete-bottom-strip .original-master-clock,
 .classic-view .original-master-clock {
   position: relative;
-  display: block;
-  min-height: 7.2rem;
-  padding: 0.34rem 0.5rem !important;
+  display: block !important;
+  align-self: start !important;
+  min-height: 7.25rem !important;
+  height: 7.25rem !important;
+  padding: 0.3rem 0.42rem !important;
   overflow: hidden;
 }
 
 .classic-view .original-master-clock h2 {
   position: absolute;
-  left: 0.7rem;
-  top: 0.34rem;
+  left: 0.56rem;
+  top: 0.3rem;
   margin: 0;
   text-align: left;
+  line-height: 1;
 }
 
 .classic-view .master-clock-original-top {
@@ -23,18 +27,18 @@
 
 .classic-view .master-rate-face {
   position: absolute;
-  left: 0.58rem;
-  top: 1.22rem;
-  width: 4.4rem;
-  height: 3.9rem;
+  left: 0.48rem;
+  top: 1.08rem;
+  width: 4.22rem;
+  height: 3.72rem;
 }
 
 .classic-view .master-rate-dial {
   position: absolute;
-  left: 1.06rem;
-  top: 0.98rem;
-  width: 2.12rem;
-  height: 2.12rem;
+  left: 1.02rem;
+  top: 0.93rem;
+  width: 2.02rem;
+  height: 2.02rem;
   border-radius: 50%;
   border: 1px solid #7b8792;
   background:
@@ -52,16 +56,16 @@
   place-items: center;
   color: #d7dee5;
   font-weight: 700;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
 }
 
 .classic-view .master-rate-dial::after {
   content: "";
   position: absolute;
   left: 50%;
-  top: 0.34rem;
+  top: 0.32rem;
   width: 2px;
-  height: 0.72rem;
+  height: 0.68rem;
   transform: translateX(-50%);
   border-radius: 2px;
   background: var(--accent);
@@ -70,30 +74,30 @@
 .classic-view .rate-num {
   position: absolute;
   color: #d5dde5;
-  font-size: 0.52rem;
+  font-size: 0.5rem;
   line-height: 1;
 }
 
-.classic-view .rate-num.n0 { left: 0.96rem; top: 3.38rem; }
-.classic-view .rate-num.n1 { left: 0.28rem; top: 2.78rem; }
-.classic-view .rate-num.n2 { left: 0.03rem; top: 2.04rem; }
-.classic-view .rate-num.n3 { left: 0.24rem; top: 1.28rem; }
-.classic-view .rate-num.n4 { left: 0.78rem; top: 0.6rem; }
-.classic-view .rate-num.n5 { left: 1.8rem; top: 0.26rem; }
-.classic-view .rate-num.n6 { left: 2.82rem; top: 0.6rem; }
-.classic-view .rate-num.n7 { left: 3.38rem; top: 1.28rem; }
-.classic-view .rate-num.n8 { left: 3.56rem; top: 2.04rem; }
-.classic-view .rate-num.n9 { left: 3.34rem; top: 2.78rem; }
-.classic-view .rate-num.n10 { left: 2.64rem; top: 3.38rem; }
+.classic-view .rate-num.n0 { left: 0.92rem; top: 3.24rem; }
+.classic-view .rate-num.n1 { left: 0.27rem; top: 2.67rem; }
+.classic-view .rate-num.n2 { left: 0.03rem; top: 1.95rem; }
+.classic-view .rate-num.n3 { left: 0.23rem; top: 1.22rem; }
+.classic-view .rate-num.n4 { left: 0.75rem; top: 0.58rem; }
+.classic-view .rate-num.n5 { left: 1.72rem; top: 0.26rem; }
+.classic-view .rate-num.n6 { left: 2.7rem; top: 0.58rem; }
+.classic-view .rate-num.n7 { left: 3.24rem; top: 1.22rem; }
+.classic-view .rate-num.n8 { left: 3.43rem; top: 1.95rem; }
+.classic-view .rate-num.n9 { left: 3.19rem; top: 2.67rem; }
+.classic-view .rate-num.n10 { left: 2.52rem; top: 3.24rem; }
 
 .classic-view .master-clock-small-jacks {
   position: absolute;
-  left: 4.82rem;
-  top: 1.58rem;
+  left: 4.55rem;
+  top: 1.48rem;
   display: grid;
-  gap: 0.48rem;
+  gap: 0.4rem;
   color: #c7d0d9;
-  font-size: 0.58rem;
+  font-size: 0.56rem;
   line-height: 1.05;
 }
 
@@ -101,64 +105,64 @@
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 
 .classic-view .master-clock-right-jacks {
   position: absolute;
-  right: 0.85rem;
-  top: 0.55rem;
+  right: 0.54rem;
+  top: 0.58rem;
   display: grid;
-  gap: 0.34rem;
+  gap: 0.25rem;
   color: #c7d0d9;
-  font-size: 0.58rem;
+  font-size: 0.56rem;
   line-height: 1.05;
 }
 
 .classic-view .master-clock-right-jacks span {
   display: grid;
-  grid-template-columns: 3.4rem auto;
+  grid-template-columns: 3.05rem auto;
   align-items: center;
-  gap: 0.32rem;
+  gap: 0.26rem;
 }
 
 .classic-view .master-clock-right-jacks strong {
-  font-size: 0.56rem;
+  font-size: 0.54rem;
   text-align: right;
 }
 
 .classic-view .clock-source-original {
   position: absolute;
-  left: 0.65rem;
-  right: 0.78rem;
-  bottom: 0.35rem;
+  left: 0.52rem;
+  right: 0.52rem;
+  bottom: 0.32rem;
   display: grid;
-  grid-template-columns: 4.25rem 10.15rem;
+  grid-template-columns: 3.48rem minmax(0, 1fr);
   align-items: end;
-  column-gap: 0.48rem;
+  column-gap: 0.38rem;
   color: #c7d0d9;
-  font-size: 0.56rem;
+  font-size: 0.54rem;
 }
 
 .classic-view .q-clock-normal-switch,
 .classic-view .clock-mode-switch {
   display: grid;
   grid-template-rows: auto auto auto;
-  justify-items: start;
-  gap: 0.08rem;
+  justify-items: center;
+  gap: 0.05rem;
 }
 
 .classic-view .q-clock-normal-switch i,
 .classic-view .clock-mode-switch i {
-  margin-left: 0.58rem;
+  margin-left: 0;
 }
 
 .classic-view .internal-external-switch,
 .classic-view .clock-source-switch {
   display: grid;
   justify-items: center;
-  gap: 0.08rem;
-  min-width: 8.8rem;
+  gap: 0.05rem;
+  min-width: 0;
 }
 
 .classic-view .internal-external-switch .source-title,
@@ -167,16 +171,16 @@
   justify-items: center;
   color: #d5dde5;
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.02;
   text-align: center;
 }
 
 .classic-view .source-select-line {
   display: grid;
-  grid-template-columns: auto 2.05rem auto 2.05rem auto;
+  grid-template-columns: auto minmax(1.2rem, 1fr) auto minmax(1.2rem, 1fr) auto;
   align-items: center;
-  width: 100%;
-  gap: 0.22rem;
+  width: min(100%, 8.9rem);
+  gap: 0.18rem;
 }
 
 .classic-view .source-select-line .source-line {
@@ -200,16 +204,16 @@
 
 .classic-view .classic-master-jack {
   display: inline-block;
-  width: 0.72rem;
-  height: 0.72rem;
+  width: 0.68rem;
+  height: 0.68rem;
   border-radius: 50%;
   border: 1px solid #8a96a2;
   background: radial-gradient(circle at 50% 50%, #06080a 0 35%, #2d343c 37% 58%, #07090b 60%);
 }
 
 .classic-view .classic-master-jack.large {
-  width: 1.28rem;
-  height: 1.28rem;
+  width: 1.16rem;
+  height: 1.16rem;
   background:
     linear-gradient(#aeb8c2, #aeb8c2) center / 1px 100% no-repeat,
     linear-gradient(90deg, #aeb8c2, #aeb8c2) center / 100% 1px no-repeat,
@@ -217,7 +221,25 @@
 }
 
 @media (max-width: 1500px) {
+  .classic-view .complete-bottom-strip .original-master-clock,
   .classic-view .original-master-clock {
-    min-height: 12rem;
+    min-height: 7.25rem !important;
+    height: 7.25rem !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .classic-view .complete-bottom-strip .original-master-clock,
+  .classic-view .original-master-clock {
+    min-height: 7.75rem !important;
+    height: 7.75rem !important;
+  }
+
+  .classic-view .master-clock-right-jacks {
+    right: 0.44rem;
+  }
+
+  .classic-view .master-clock-small-jacks {
+    left: 4.45rem;
   }
 }
