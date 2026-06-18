@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MerrinLab Hybrid 16/32-Step Sequencer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="hybrid.css" />
+</head>
+<body class="hybrid-view">
+  <main class="panel" aria-labelledby="panel-title">
+    <header class="panel-header hybrid-header">
+      <div>
+        <p class="eyebrow">MerrinLab Hybrid</p>
+        <h1 id="panel-title">Hybrid 16/32-Step Sequencer</h1>
+        <p class="subtitle">Classic hardware-style faceplate with the useful 16/32-step controls added as panel controls. Non-functional visual prototype.</p>
+      </div>
+      <p class="hybrid-meta">Classic base · 16 visible steps · Bank A/B · Play Range A/B/A+B</p>
+    </header>
+
+    <section class="hybrid-control-strip" aria-label="Hybrid mode and bank controls">
+      <div class="hybrid-control-block">
+        <h2>Mode</h2>
+        <div class="pill-row"><span class="pill active">Classic</span><span class="pill">Hybrid</span></div>
+        <p>Classic layout first. Expanded controls are added without changing the 16-step row.</p>
+      </div>
+      <div class="hybrid-control-block compact">
+        <h2>Edit Bank</h2>
+        <div class="round-row"><span class="round active">A</span><span class="round">B</span></div>
+        <p>A edits 01–16. B edits 17–32.</p>
+      </div>
+      <div class="hybrid-control-block wide">
+        <h2>Play Range</h2>
+        <div class="pill-row wide"><span class="pill active">A</span><span class="pill">B</span><span class="pill">A+B</span></div>
+        <p>Play range is separate from what is being edited.</p>
+      </div>
+      <div class="hybrid-readouts">
+        <div><span>Current Step</span><strong>01</strong></div>
+        <div><span>Current Bank</span><strong>A</strong></div>
+        <div><span>Status</span><strong>Stopped</strong></div>
+      </div>
+    </section>
+
+    <section class="hybrid-step-panel" aria-label="Hybrid classic-style 16-step row">
+      <h2 class="section-title">Classic-style 16-step row layout</h2>
+      <div class="outer-label">Music from<br>outer space</div>
+      <div class="time-label">16 step time<br>quantized<br>sequencer</div>
+
+      <div class="hybrid-step-row step-numbers" aria-label="Step numbers 1 to 16">
+        <strong>Step</strong>
+        <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+      </div>
+
+      <div class="hybrid-step-row" aria-label="Active Step LED row">
+        <strong>Active Step</strong>
+        <span class="step-led on"></span><span class="step-led"></span><span class="step-led"></span><span class="step-led"></span><span class="step-led"></span><span class="step-led"></span><span class="step-led"></span><span class="step-led"></span><span class="step-led"></span><span class="step-led"></span><span class="step-led"></span><span class="step-led"></span><span class="step-led"></span><span class="step-led"></span><span class="step-led"></span><span class="step-led"></span>
+      </div>
+
+      <div class="hybrid-step-row" aria-label="Gate At Step Selection row">
+        <strong>Gate At Step Selection</strong>
+        <button type="button">On</button><button type="button">On</button><button type="button">On</button><button type="button">On</button><button type="button">On</button><button type="button">On</button><button type="button">On</button><button type="button">On</button><button type="button">On</button><button type="button">On</button><button type="button">On</button><button type="button">On</button><button type="button">On</button><button type="button">On</button><button type="button">On</button><button type="button">On</button>
+      </div>
+
+      <div class="hybrid-step-row" aria-label="Coarse Voltage Adjustment row">
+        <strong>Coarse Voltage Adjustment</strong>
+        <span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span><span class="hybrid-knob"></span>
+      </div>
+
+      <div class="hybrid-step-row" aria-label="Fine Voltage Adjustment row">
+        <strong>Fine Voltage Adjustment</strong>
+        <span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span>
+      </div>
+
+      <div class="hybrid-step-row" aria-label="Step Duration Adjustment row">
+        <strong>Step Duration Adjustment</strong>
+        <span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span><span class="hybrid-knob small"></span>
+      </div>
+    </section>
+
+    <section class="hybrid-bottom-strip" aria-label="Hybrid lower hardware controls">
+      <div class="hardware-cell duration-cell">
+        <h2>Step Duration</h2>
+        <div class="duration-bit-labels"><span>8</span><span>4</span><span>2</span><span>1</span></div>
+        <div class="duration-bit-row"><i></i><i></i><i></i><i></i></div>
+        <p>Clock steps = code + 1</p>
+        <div class="hybrid-led-matrix" aria-label="Step Duration LED Matrix">
+          <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
+          <i class="on"></i><i class="on"></i><i class="on"></i><i></i>
+          <i class="on"></i><i class="on"></i><i></i><i></i>
+          <i class="on"></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+
+      <div class="hardware-cell master-clock-cell">
+        <h2>Master Clock Rate</h2>
+        <div class="rate-cluster">
+          <div class="rate-face"><span>4</span><span>5</span><span>6</span><span>3</span><b></b><span>7</span><span>2</span><span>1</span><span>0</span><span>10</span><span>9</span><span>8</span></div>
+          <div class="clock-mini-jacks"><span><i></i>Master</span><span><i></i>Q-Clock</span></div>
+          <div class="clock-stack"><span>Ext. Start <i></i></span><span>Clock Out <i></i></span><span>Ext. Clk In <i></i></span></div>
+        </div>
+        <div class="clock-source-row"><span>Q-Clock</span><i></i><span>Normal</span><strong>Clock<br>Source</strong><span>Internal</span><em></em><i></i><em></em><span>External</span></div>
+      </div>
+
+      <div class="hardware-cell sequencer-cell">
+        <h2>Sequencer Mode</h2>
+        <div class="mini-dial"></div>
+        <p>Action Step</p>
+        <ul><li>Reverse</li><li>Reset</li><li>Stop</li><li>None / 16 Step</li></ul>
+      </div>
+
+      <div class="hardware-cell transport-cell">
+        <h2>Manual Control</h2>
+        <div class="button-row"><span>Reset</span><span>Stop/Run</span><span>Back</span><span>Forward</span></div>
+      </div>
+
+      <div class="hardware-cell bank-cell">
+        <h2>Hybrid Bank Control</h2>
+        <div class="bank-grid"><span>Edit A</span><span>Edit B</span><span>Play A</span><span>Play B</span><span>Play A+B</span></div>
+      </div>
+    </section>
+
+    <footer class="hybrid-footer-strip">
+      <span>Non-functional visual prototype</span>
+      <a href="classic.html">Classic reference</a>
+      <a href="digital.html">Digital mockup</a>
+    </footer>
+  </main>
+</body>
+</html>
