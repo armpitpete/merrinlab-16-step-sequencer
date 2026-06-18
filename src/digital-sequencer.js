@@ -4,6 +4,11 @@
   const STEPS_PER_BANK = 16;
   const BANK_COUNT = 2;
   const TOTAL_STEPS = STEPS_PER_BANK * BANK_COUNT;
+  const PLAY_RANGES = [
+    { label: "A", start: 0, length: STEPS_PER_BANK },
+    { label: "B", start: STEPS_PER_BANK, length: STEPS_PER_BANK },
+    { label: "A+B", start: 0, length: TOTAL_STEPS },
+  ];
   const channel = "BroadcastChannel" in window ? new BroadcastChannel(CHANNEL) : null;
 
   function send(type, payload) {
@@ -35,9 +40,12 @@
 
   const editBankBlock = findControlBlock("Edit Bank");
   const editBankButtons = editBankBlock ? Array.from(editBankBlock.querySelectorAll("button")) : [];
+  const playRangeBlock = findControlBlock("Play Range");
+  const playRangeButtons = playRangeBlock ? Array.from(playRangeBlock.querySelectorAll("button")) : [];
 
-  let currentStep = 0;
   let activeBank = 0;
+  let activePlayRange = 0;
+  let playCursor = 0;
   let running = false;
   let timer = null;
   let gateTimer = null;
@@ -80,8 +88,29 @@
     return visibleBankStart() + visibleIndex + 1;
   }
 
+  function bankForGlobalIndex(globalIndex) {
+    return Math.floor(globalIndex / STEPS_PER_BANK);
+  }
+
+  function visibleIndexForGlobalIndex(globalIndex) {
+    return globalIndex % STEPS_PER_BANK;
+  }
+
   function bankLabel(bankIndex) {
     return bankIndex === 0 ? "A" : "B";
+  }
+
+  function currentPlayRange() {
+    return PLAY_RANGES[activePlayRange];
+  }
+
+  function playRangeLabel() {
+    return currentPlayRange().label;
+  }
+
+  function activePlayGlobalIndex() {
+    const range = currentPlayRange();
+    return range.start + playCursor;
   }
 
   function pitchToCv(pitch) {
@@ -130,7 +159,7 @@
     });
 
     setCurrentBankReadout();
-    showStep(currentStep);
+    showGlobalStep(activePlayGlobalIndex());
   }
 
   function setActiveBank(nextBank) {
@@ -139,51 +168,88 @@
     if (running) stop();
     saveVisibleBank();
     activeBank = nextBank;
-    currentStep = 0;
     renderVisibleBank();
     setStatus(`Bank ${bankLabel(activeBank)} selected`);
   }
 
-  function showStep(index) {
+  function setActivePlayRange(nextRange) {
+    if (!PLAY_RANGES[nextRange] || nextRange === activePlayRange) return;
+
+    saveVisibleBank();
+    activePlayRange = nextRange;
+    playCursor = 0;
+    updatePlayRangeButtons();
+    showGlobalStep(activePlayGlobalIndex());
+
+    if (running) {
+      restartIfRunning();
+      setStatus("Running");
+    } else {
+      setStatus(`Play Range ${playRangeLabel()} selected`);
+    }
+  }
+
+  function updatePlayRangeButtons() {
+    playRangeButtons.forEach((button, index) => {
+      button.classList.toggle("active", index === activePlayRange);
+    });
+  }
+
+  function showGlobalStep(globalIndex) {
+    const visibleIndex = visibleIndexForGlobalIndex(globalIndex);
+    const visibleBank = bankForGlobalIndex(globalIndex);
+
     steps.forEach((step, stepIndex) => {
-      const isActive = stepIndex === index;
+      const isActive = visibleBank === activeBank && stepIndex === visibleIndex;
       step.classList.toggle("active", isActive);
       step.querySelector(".step-led")?.classList.toggle("on", isActive);
     });
 
     if (currentStepReadout) {
-      currentStepReadout.textContent = String(globalStepNumber(index)).padStart(2, "0");
+      currentStepReadout.textContent = String(globalIndex + 1).padStart(2, "0");
     }
   }
 
-  function closeGate(stepNumber) {
-    send("gate", { open: false, step: stepNumber, bank: bankLabel(activeBank) });
+  function closeGate(globalIndex) {
+    send("gate", {
+      open: false,
+      step: globalIndex + 1,
+      visibleStep: visibleIndexForGlobalIndex(globalIndex) + 1,
+      bank: bankLabel(bankForGlobalIndex(globalIndex)),
+      playRange: playRangeLabel(),
+    });
   }
 
-  function playStep(index) {
-    const step = steps[index];
-    if (!step) return;
+  function playGlobalStep(globalIndex) {
+    const visibleBank = bankForGlobalIndex(globalIndex);
+    const visibleIndex = visibleIndexForGlobalIndex(globalIndex);
+    if (visibleBank === activeBank) saveVisibleStep(visibleIndex);
 
-    saveVisibleStep(index);
+    const patternStep = pattern[globalIndex];
+    if (!patternStep) return;
 
-    const stepNumber = globalStepNumber(index);
-    const pitch = getStepPitch(step);
-    const length = getStepLength(step);
+    const pitch = patternStep.pitch;
+    const length = patternStep.length;
     const stepMs = clockMs();
     const gateMs = Math.min(stepMs * 0.85, Math.max(35, stepMs * (length / 16)));
+    const stepNumber = globalIndex + 1;
+    const bank = bankLabel(visibleBank);
 
-    showStep(index);
-    send("clock", { step: stepNumber, visibleStep: index + 1, bank: bankLabel(activeBank) });
-    send("pitch-cv", { value: pitchToCv(pitch), pitch, step: stepNumber, visibleStep: index + 1, bank: bankLabel(activeBank) });
-    send("gate", { open: true, step: stepNumber, visibleStep: index + 1, bank: bankLabel(activeBank) });
+    showGlobalStep(globalIndex);
+    send("clock", { step: stepNumber, visibleStep: visibleIndex + 1, bank, playRange: playRangeLabel() });
+    send("pitch-cv", { value: pitchToCv(pitch), pitch, step: stepNumber, visibleStep: visibleIndex + 1, bank, playRange: playRangeLabel() });
+    send("gate", { open: true, step: stepNumber, visibleStep: visibleIndex + 1, bank, playRange: playRangeLabel() });
 
     window.clearTimeout(gateTimer);
-    gateTimer = window.setTimeout(() => closeGate(stepNumber), gateMs);
+    gateTimer = window.setTimeout(() => closeGate(globalIndex), gateMs);
   }
 
   function advance() {
-    playStep(currentStep);
-    currentStep = (currentStep + 1) % steps.length;
+    const range = currentPlayRange();
+    const globalIndex = range.start + playCursor;
+
+    playGlobalStep(globalIndex);
+    playCursor = (playCursor + 1) % range.length;
   }
 
   function stop() {
@@ -192,7 +258,7 @@
     window.clearTimeout(gateTimer);
     timer = null;
     gateTimer = null;
-    send("gate", { open: false, step: globalStepNumber(currentStep), bank: bankLabel(activeBank) });
+    closeGate(activePlayGlobalIndex());
     setStatus("Stopped");
   }
 
@@ -205,9 +271,16 @@
   }
 
   function reset() {
-    currentStep = 0;
-    showStep(currentStep);
-    send("clock", { step: globalStepNumber(currentStep), visibleStep: 1, bank: bankLabel(activeBank), reset: true });
+    playCursor = 0;
+    const globalIndex = activePlayGlobalIndex();
+    showGlobalStep(globalIndex);
+    send("clock", {
+      step: globalIndex + 1,
+      visibleStep: visibleIndexForGlobalIndex(globalIndex) + 1,
+      bank: bankLabel(bankForGlobalIndex(globalIndex)),
+      playRange: playRangeLabel(),
+      reset: true,
+    });
     setStatus(running ? "Running" : "Stopped");
   }
 
@@ -231,6 +304,10 @@
     });
   });
 
+  playRangeButtons.forEach((button, index) => {
+    button.addEventListener("click", () => setActivePlayRange(index));
+  });
+
   transportButtons.forEach((button) => {
     const label = button.textContent.trim().toLowerCase();
     if (label === "run") button.addEventListener("click", run);
@@ -246,11 +323,16 @@
     getLengthInput(step)?.addEventListener("input", () => saveVisibleStep(index));
 
     getGateButton(step)?.addEventListener("click", () => {
-      currentStep = index;
-      playStep(index);
+      const globalIndex = visibleBankStart() + index;
+      const range = currentPlayRange();
+      const isInRange = globalIndex >= range.start && globalIndex < range.start + range.length;
+
+      if (isInRange) playCursor = globalIndex - range.start;
+      playGlobalStep(globalIndex);
     });
   });
 
+  updatePlayRangeButtons();
   renderVisibleBank();
   setStatus("Stopped");
 })();
