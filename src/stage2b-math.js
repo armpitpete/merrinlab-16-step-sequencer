@@ -1,0 +1,1 @@
+(function(){'use strict';window.MerrinLabStage2BMath={pair:function(base,swing){var s=Math.max(50,Math.min(75,Number(swing)||50))/100;return[base*2*s,base*2*(1-s)]}}})();
