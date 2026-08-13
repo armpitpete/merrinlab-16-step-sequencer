@@ -109,6 +109,8 @@
   let currentGlobalIndex = null;
   let pulseInStep = 0;
   let openGateGlobalIndex = null;
+  let lastExternalClockTime = null;
+  let externalPulseMs = null;
   const gateTimers = new Set();
 
   function getPitchInput(step) {
@@ -186,6 +188,11 @@
   function pulseMs() {
     const bpm = Number(clockRateInput?.value || 120);
     return (60000 / Math.max(20, bpm)) / 4;
+  }
+
+  function currentPulseMs() {
+    if (clockSource === "external" && externalPulseMs !== null) return externalPulseMs;
+    return pulseMs();
   }
 
   function pitchToCv(midiPitch) {
@@ -377,7 +384,7 @@
     send("accent", { ...common, active: patternStep.accent });
 
     if (gateMode === "single") {
-      emitGatePulse(globalIndex, pulseMs() * patternStep.length * 0.85, "single-step");
+      emitGatePulse(globalIndex, currentPulseMs() * patternStep.length * 0.85, "single-step");
     }
   }
 
@@ -486,7 +493,7 @@
     }
 
     if (gateMode === "multi") {
-      emitGatePulse(currentGlobalIndex, pulseMs() * 0.6, "multi-pulse");
+      emitGatePulse(currentGlobalIndex, currentPulseMs() * 0.6, "multi-pulse");
     }
 
     setStatus(`${clockSource === "external" ? "External" : "Running"} · ${String(currentGlobalIndex + 1).padStart(2, "0")} · ${pulseNumber}/${patternStep.length}`);
@@ -504,10 +511,10 @@
     pulseTimer = null;
   }
 
-  function startInternalTimer() {
+  function startInternalTimer({ immediate = true } = {}) {
     stopInternalTimer();
     if (!running || clockSource !== "internal") return;
-    tick();
+    if (immediate) tick();
     pulseTimer = window.setInterval(() => tick(), pulseMs());
   }
 
@@ -561,7 +568,7 @@
     pulseInStep = 0;
     showGlobalStep(globalIndex);
     emitStepStart(globalIndex);
-    if (gateMode === "multi") emitGatePulse(globalIndex, pulseMs() * 0.6, "manual-multi");
+    if (gateMode === "multi") emitGatePulse(globalIndex, currentPulseMs() * 0.6, "manual-multi");
     setStatus(`Manual · ${String(globalIndex + 1).padStart(2, "0")}`);
 
     currentGlobalIndex = null;
@@ -570,7 +577,7 @@
 
   function restartClockIfRunning() {
     if (!running || clockSource !== "internal") return;
-    startInternalTimer();
+    startInternalTimer({ immediate: false });
   }
 
   function setActiveBank(nextBank) {
@@ -622,6 +629,8 @@
     forceCloseOpenGate("clock-source-change");
     currentGlobalIndex = null;
     pulseInStep = 0;
+    lastExternalClockTime = null;
+    externalPulseMs = null;
     updateClockSourceButtons();
 
     if (running && clockSource === "internal") {
@@ -641,7 +650,15 @@
     if (!isAddressedToSequencer(message)) return;
 
     if (message.type === "clock") {
-      if (running && clockSource === "external") tick({ external: true });
+      if (running && clockSource === "external") {
+        const now = performance.now();
+        if (lastExternalClockTime !== null) {
+          const delta = now - lastExternalClockTime;
+          if (delta >= 20 && delta <= 5000) externalPulseMs = delta;
+        }
+        lastExternalClockTime = now;
+        tick({ external: true });
+      }
       return;
     }
 
@@ -731,7 +748,7 @@
       if (isInRange) playCursor = globalIndex - range.start;
       showGlobalStep(globalIndex);
       emitStepStart(globalIndex);
-      if (gateMode === "multi") emitGatePulse(globalIndex, pulseMs() * 0.6, "preview-multi");
+      if (gateMode === "multi") emitGatePulse(globalIndex, currentPulseMs() * 0.6, "preview-multi");
       setStatus(`Preview · ${String(globalIndex + 1).padStart(2, "0")}`);
     });
   });
