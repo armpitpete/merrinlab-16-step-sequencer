@@ -28,7 +28,7 @@ Start with:
 - [ ] Reset returns the traversal display to Step 01 in Forward mode.
 - [ ] Manual Step advances one playable step while stopped.
 
-## 2. Real step length
+## 2. Real step length and tempo changes
 
 Set:
 
@@ -42,6 +42,8 @@ Step 02 Length = 1
 - [ ] Step 02 then occupies one pulse.
 - [ ] Changing Length changes how long the step occupies, not merely its gate time.
 - [ ] Length code display follows `length - 1` as the 4-bit hardware-style code.
+- [ ] While running, move the Rate slider.
+- [ ] Playback changes rate without an extra immediate pulse/step jump when the slider moves.
 
 ## 3. 32-step banking
 
@@ -145,6 +147,9 @@ window.dispatchEvent(new CustomEvent("merrinlab-patch-bus", {
 - [ ] Untargeted clock messages are ignored.
 - [ ] The Sequencer's own output messages do not drive its external input.
 - [ ] Received external clocks are not echoed as clock output.
+- [ ] Send several pulses at a steady interval; gate widths follow the observed external pulse interval after the first pulse.
+- [ ] The first external pulse remains safe even though it must temporarily use the local Rate as its gate-width reference.
+- [ ] Change back to Internal and then External; old external timing is not reused.
 
 ## 10. External transport and transpose
 
