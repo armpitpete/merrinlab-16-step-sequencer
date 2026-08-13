@@ -106,4 +106,11 @@
       window.requestAnimationFrame(syncAllLengths);
     });
   }
+
+  if (!document.querySelector('script[data-stage2a-expressive-loader]')) {
+    const expressiveScript = document.createElement('script');
+    expressiveScript.src = 'src/digital-expressive-layer.js';
+    expressiveScript.dataset.stage2aExpressiveLoader = 'true';
+    document.body.appendChild(expressiveScript);
+  }
 })();
