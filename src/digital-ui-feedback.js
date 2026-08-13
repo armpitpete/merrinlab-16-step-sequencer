@@ -107,10 +107,21 @@
     });
   }
 
+  function loadExpressiveEditor() {
+    if (document.querySelector('script[data-stage2a-expressive-editor-loader]')) return;
+    const editorScript = document.createElement('script');
+    editorScript.src = 'src/digital-expressive-editor.js';
+    editorScript.dataset.stage2aExpressiveEditorLoader = 'true';
+    document.body.appendChild(editorScript);
+  }
+
   if (!document.querySelector('script[data-stage2a-expressive-loader]')) {
     const expressiveScript = document.createElement('script');
     expressiveScript.src = 'src/digital-expressive-layer.js';
     expressiveScript.dataset.stage2aExpressiveLoader = 'true';
+    expressiveScript.addEventListener('load', loadExpressiveEditor, { once: true });
     document.body.appendChild(expressiveScript);
+  } else if (window.__merrinlabExpressiveStage2A) {
+    loadExpressiveEditor();
   }
 })();
