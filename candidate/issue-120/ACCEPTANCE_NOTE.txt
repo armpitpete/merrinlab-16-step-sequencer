@@ -1,0 +1,1 @@
+Stage 2A hands-on evidence: Chance 0, Chance 50, Rest, Ratchet 4 and Bank A/B independence all passed. UI usability follow-up remains: use the full-width Expressive Step Editor for Chance/Ratchet adjustment rather than the cramped per-card sliders.
