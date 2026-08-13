@@ -46,14 +46,31 @@
   const ratchetInput = section.querySelector('[data-editor-ratchet]');
   const ratchetOutput = section.querySelector('[data-editor-ratchet-output]');
   let selectedVisibleIndex = 0;
-  function sourceControls(visibleIndex) { const step = steps[visibleIndex]; if (!step) return null; const wrapper = step.querySelector('.expressive-controls'); if (!wrapper) return null; const labels = Array.from(wrapper.querySelectorAll('.expressive-control')); return { step, rest: wrapper.querySelector('.expressive-rest'), chance: labels[0] && labels[0].querySelector("input[type='range']"), ratchet: labels[1] && labels[1].querySelector("input[type='range']") }; }
+  function sourceControls(visibleIndex) {
+    const step = steps[visibleIndex];
+    if (!step) return null;
+    const wrapper = step.querySelector('.expressive-controls');
+    if (!wrapper) return null;
+    const labels = Array.from(wrapper.querySelectorAll('.expressive-control'));
+    return { step, rest: wrapper.querySelector('.expressive-rest'), chance: labels[0] && labels[0].querySelector("input[type='range']"), ratchet: labels[1] && labels[1].querySelector("input[type='range']") };
+  }
   function selectedControls() { return sourceControls(selectedVisibleIndex); }
   function syncEditor() {
-    const control = selectedControls(); if (!control || !control.chance || !control.ratchet || !control.rest) return;
+    const control = selectedControls();
+    if (!control || !control.chance || !control.ratchet || !control.rest) return;
     steps.forEach(function (step, index) { step.classList.toggle('expressive-selected', index === selectedVisibleIndex); });
-    const heading = control.step.querySelector('h3'); const stepNumber = Number(heading && heading.textContent.trim()) || selectedVisibleIndex + 1; const chance = Number(control.chance.value) || 0; const ratchets = Number(control.ratchet.value) || 1; const resting = control.rest.classList.contains('active');
-    stepReadout.textContent = String(stepNumber).padStart(2, '0'); bankReadout.textContent = stepNumber > 16 ? 'Bank B' : 'Bank A'; chanceInput.value = String(chance); chanceOutput.value = String(chance); chanceOutput.textContent = chance + '%'; ratchetInput.value = String(ratchets); ratchetOutput.value = String(ratchets); ratchetOutput.textContent = String(ratchets); restButton.classList.toggle('active', resting); restButton.setAttribute('aria-pressed', resting ? 'true' : 'false'); restButton.textContent = resting ? 'Rest On' : 'Rest Off';
-    section.querySelectorAll('[data-chance-preset]').forEach(function (button) { button.classList.toggle('active', Number(button.dataset.chancePreset) === chance); }); section.querySelectorAll('[data-ratchet-preset]').forEach(function (button) { button.classList.toggle('active', Number(button.dataset.ratchetPreset) === ratchets); });
+    const heading = control.step.querySelector('h3');
+    const stepNumber = Number(heading && heading.textContent.trim()) || selectedVisibleIndex + 1;
+    const chance = Number(control.chance.value) || 0;
+    const ratchets = Number(control.ratchet.value) || 1;
+    const resting = control.rest.classList.contains('active');
+    stepReadout.textContent = String(stepNumber).padStart(2, '0');
+    bankReadout.textContent = stepNumber > 16 ? 'Bank B' : 'Bank A';
+    chanceInput.value = String(chance); chanceOutput.value = String(chance); chanceOutput.textContent = chance + '%';
+    ratchetInput.value = String(ratchets); ratchetOutput.value = String(ratchets); ratchetOutput.textContent = String(ratchets);
+    restButton.classList.toggle('active', resting); restButton.setAttribute('aria-pressed', resting ? 'true' : 'false'); restButton.textContent = resting ? 'Rest On' : 'Rest Off';
+    section.querySelectorAll('[data-chance-preset]').forEach(function (button) { button.classList.toggle('active', Number(button.dataset.chancePreset) === chance); });
+    section.querySelectorAll('[data-ratchet-preset]').forEach(function (button) { button.classList.toggle('active', Number(button.dataset.ratchetPreset) === ratchets); });
   }
   function selectStep(index) { selectedVisibleIndex = Math.max(0, Math.min(steps.length - 1, index)); syncEditor(); }
   steps.forEach(function (step, index) { step.addEventListener('click', function () { selectStep(index); }); step.querySelectorAll('.expressive-control').forEach(function (label) { label.setAttribute('title', 'Click to select this step; adjust it in the Expressive Step Editor'); }); });
