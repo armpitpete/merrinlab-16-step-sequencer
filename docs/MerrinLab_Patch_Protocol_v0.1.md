@@ -157,6 +157,14 @@ Reasons currently include:
 
 Muted steps do not emit gate-open or trigger messages.
 
+Gate width follows the active clock timing reference:
+
+- Internal: the local 1/16-note pulse interval derived from the Rate control.
+- External: the measured interval between valid incoming clock messages once two pulses have been seen.
+- First External pulse: local Rate is used as a safe fallback because no external interval exists yet.
+
+Only measured external intervals from 20 to 5000 ms are accepted for gate-width timing.
+
 ## `trigger`
 
 Emitted with each gate-open event.
@@ -218,7 +226,10 @@ Effect:
 
 - only acts while the Sequencer is Running;
 - only acts while External clock is selected;
-- one received message = one base pulse.
+- one received message = one base pulse;
+- received external clocks are not echoed as `clock` output;
+- the interval between accepted pulses is measured for gate-width timing;
+- changing clock source clears the previous external timing estimate.
 
 ## `transport`
 
