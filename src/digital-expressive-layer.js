@@ -180,14 +180,21 @@
     expressiveReadout('triggers', expressiveTriggerCount);
   }
 
+  function visitDurationMs(visit) {
+    if (visit && Number(visit.stepDurationMs) > 0) {
+      return Math.max(40, Number(visit.stepDurationMs));
+    }
+    return Math.max(40, basePulseMs() * Math.max(1, visit ? visit.length : 1));
+  }
+
   function scheduleRatchets(visit) {
     if (!visit || visit.suppress || visit.muted || visit.ratchets <= 1) return;
 
     const token = visit.serial;
     const count = visit.ratchets;
-    const duration = Math.max(40, basePulseMs() * visit.length);
+    const duration = visitDurationMs(visit);
     const interval = duration / count;
-    const gateDuration = Math.max(20, Math.min(interval * 0.45, interval - 8));
+    const gateDuration = Math.max(20, Math.min(interval * 0.45, Math.max(20, interval - 8)));
 
     for (let index = 0; index < count; index += 1) {
       const openTimer = window.setTimeout(function () {
@@ -206,6 +213,7 @@
           glide: Boolean(visit.glide),
           ratchet: index + 1,
           ratchetCount: count,
+          stepDurationMs: duration,
           reason: 'dedicated-ratchet',
         };
 
@@ -235,6 +243,8 @@
     clearRatchetTimers('new-step');
     expressiveTriggerCount = 0;
     visitSerial += 1;
+
+    const suppliedStepDuration = Number(payload.stepDurationMs);
     currentVisit = {
       serial: visitSerial,
       globalIndex: globalIndex,
@@ -244,6 +254,7 @@
       suppress: stepState.rest || !chancePass,
       ratchets: stepState.ratchets,
       length: mirror.length,
+      stepDurationMs: suppliedStepDuration > 0 ? suppliedStepDuration : null,
       muted: mirror.mute,
       accent: false,
       glide: false,
@@ -267,6 +278,22 @@
     return !Number.isFinite(step) || step === currentVisit.globalIndex + 1;
   }
 
+  function recordClock(message) {
+    const payloadMs = Number(message && message.payload && message.payload.pulseDurationMs);
+    if (payloadMs >= 20 && payloadMs <= 5000) {
+      observedPulseMs = payloadMs;
+      lastClockAt = performance.now();
+      return;
+    }
+
+    const now = performance.now();
+    if (lastClockAt !== null) {
+      const delta = now - lastClockAt;
+      if (delta >= 20 && delta <= 5000) observedPulseMs = delta;
+    }
+    lastClockAt = now;
+  }
+
   function processSequencerMessage(message) {
     if (!message || typeof message !== 'object') return { allow: true };
     if (message.protocol !== PROTOCOL || message.source !== MODULE_ID) return { allow: true };
@@ -280,12 +307,7 @@
     if (type === 'step-index') {
       beginVisit(message);
     } else if (type === 'clock') {
-      const now = performance.now();
-      if (lastClockAt !== null) {
-        const delta = now - lastClockAt;
-        if (delta >= 20 && delta <= 5000) observedPulseMs = delta;
-      }
-      lastClockAt = now;
+      recordClock(message);
     } else if (currentVisit && sameVisit(message)) {
       if (type === 'pitch-cv') {
         currentVisit.glide = Boolean(message.payload && message.payload.glide);
