@@ -1,62 +1,137 @@
 # MerrinLab 16-Step Sequencer
 
-Browser-based sequencer mockup and patch-control experiment for the MerrinLab software-instrument family.
+Browser-based 16/32-step control sequencer for the MerrinLab software-instrument family.
+
+## Product role
+
+The Sequencer is a separate MerrinLab instrument.
+
+- **MerrinLab Ultimate Synth** — synthesis laboratory.
+- **MerrinLab 16-Step Sequencer** — pattern / control laboratory.
+- **SpectraSynth** — timbral-melody instrument.
+
+The Sequencer should connect to Ultimate and other MerrinLab instruments; it should not be merged into Ultimate as one giant interface.
 
 ## Current direction
 
-The active design direction is the **Digital 16/32-Step Sequencer**.
+The active implementation is the **Digital 16/32-Step Sequencer** in `digital.html`.
 
-The repository also keeps two non-current references:
+Classic and Hybrid remain reference surfaces only:
 
-- **Classic** — a Ray-style 16-step panel reference for visual and possible hardware study;
-- **Hybrid** — an earlier experiment retained for comparison.
+- `classic.html` — hardware-style visual reference;
+- `hybrid.html` — earlier hybrid experiment.
 
-These references are not the active implementation target.
+## What works now
 
-## Current surfaces
+The Digital sequencer has a real 32-step pattern model with 16 visible cards at a time.
 
-- `index.html` — view selector and project entry point;
-- `digital.html` — current digital 16/32-step direction;
-- `classic.html` — classic reference;
-- `hybrid.html` — experimental reference.
+Working behaviour includes:
 
-The digital direction includes interface concepts such as:
+- Edit Bank A = steps 01–16;
+- Edit Bank B = steps 17–32;
+- Play Range A, B, or A+B;
+- internal 1/16-note clock at 40–240 BPM;
+- per-step pitch;
+- per-step length of 1–16 clock pulses;
+- Forward, Reverse, Ping-Pong, and Random traversal;
+- Single and Multi gate modes;
+- per-step Mute, Skip, Accent, and Glide state;
+- Run, Stop, Reset, and Manual Step;
+- software 1V/oct-style pitch-CV messages;
+- clock, step-index, pitch-CV, gate, trigger, reset, and accent output messages;
+- targeted external clock, transport, reset, and transpose input through the MerrinLab patch bus.
 
-- Bank A/B;
-- selectable play range;
-- 16/32-step operation;
-- software-oriented Clean-mode controls.
+The exact functional boundary is documented in:
 
-## Current status
+`docs/Digital_Functional_Boundary_v0.2.md`
 
-**Design and browser-mockup stage.**
+The patch-bus contract is documented in:
 
-Do not assume a visible control is functional merely because it appears on a panel. Functional timing, transport, step data, patch-bus output and external instrument control must each be proved and documented separately.
+`docs/MerrinLab_Patch_Protocol_v0.1.md`
 
-## Family relationship
+## Important limits
 
-Shared MerrinLab/MFOS rules and patch-bus authority belong in:
+The current Digital build does **not** yet provide:
 
-`armpitpete/merrinlab-mfos-docs`
+- audio generation;
+- physical/visual patch-cable routing;
+- probability;
+- dedicated ratchet-count controls beyond Multi gate;
+- swing;
+- scale quantising;
+- modulation/CV lanes;
+- pattern save/load or pattern chaining;
+- MIDI input/output or MIDI clock;
+- standalone application packaging;
+- VST/AU plugin builds.
 
-Related instrument repositories include:
+`Normal / Quantized` remains a reserved visual control.
 
-- `armpitpete/merrinlab-alien-screamer`;
-- `armpitpete/mfos-echo-rockit`;
-- `armpitpete/merrinlab-ultimate-synth`;
-- `armpitpete/merrinlab-vcv`.
+The Original/Clean mode selector is retained as a design reference; the current working engine is the Digital/Clean behaviour.
 
-## Immediate gate
+## Timing rule
 
-Before expanding the interface:
+Step `Length` means **clock pulses occupied by the step**, not merely gate length.
 
-1. inventory which digital-view controls currently have real behaviour;
-2. mark all visual-only controls explicitly;
-3. define one bounded transport proof;
-4. define the exact `merrinlab.patch.v0.1` messages, if any, that this sequencer sends;
-5. add a repeatable manual test checklist;
-6. record an accepted version checkpoint.
+At 120 BPM the internal base pulse is a 1/16 note. A step with `Length = 4` occupies four of those pulses before traversal moves to the next playable step.
 
-## Stop rule
+## M/S/A/G semantics
 
-Do not add more panel controls, banks, modes or patch destinations until the current digital view has a documented functional boundary and one tested transport path.
+- **Mute** — the step consumes its normal time and still outputs pitch/step state, but gate/trigger output is suppressed.
+- **Skip** — the step is omitted from playback traversal.
+- **Accent** — the step emits `accent: true`.
+- **Glide** — the step emits `glide: true` with pitch-CV output for downstream instruments to interpret.
+
+## MerrinLab patch bus
+
+Browser prototypes communicate on:
+
+`merrinlab-patch-bus`
+
+Messages use:
+
+`merrinlab.patch.v0.1`
+
+External input messages must be explicitly targeted to `merrinlab-16-step-sequencer` (or `*`) so unrelated bus traffic cannot accidentally drive the Sequencer.
+
+The current browser bus is an interoperability proof, not the final standalone/plugin routing system.
+
+## Manual acceptance
+
+Use:
+
+`docs/Digital_Manual_Test_Checklist_v0.2.md`
+
+Do not record a new accepted checkpoint until the Digital build has passed the hands-on checklist.
+
+## Product roadmap
+
+The next product stages are recorded in:
+
+`docs/Product_Direction_v0.2.md`
+
+Priority after this core lane:
+
+1. probability / rests and dedicated ratchets;
+2. swing and scale quantising;
+3. one or more per-step modulation/CV lanes;
+4. pattern save/load and chaining;
+5. MIDI note/clock/transport;
+6. standalone and plugin packaging;
+7. direct MerrinLab host routing to Ultimate and other instruments.
+
+## Development rule
+
+Keep the Sequencer focused on controlling musical events through time.
+
+Do not turn it into an audio synth.
+
+Do not hide its timing/control role inside Ultimate.
+
+Do not claim roadmap features as working until they have their own implementation and acceptance evidence.
+
+## Deployment boundary
+
+GitHub Pages deploys only from `main`.
+
+Feature branches and pull requests do not authorise merge or public deployment.
